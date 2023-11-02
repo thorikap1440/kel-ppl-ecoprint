@@ -1,0 +1,131 @@
+/* Untuk Tablet */
+@media screen and (max-width: 1000px) {
+  /* Start Hero */
+  .hero-tagline h4 {
+    font-size: 32px;
+  }
+
+  .hero-tagline p {
+    font-size: 25px;
+    font-weight: 200;
+  }
+
+  .img-hero {
+    width: 60%;
+  }
+  /* End Hero */
+
+  /* Start Tentang Kami */
+  .tentang-kami-tagline h3 {
+    padding-top: 25px;
+  }
+  /* End Tentang Kami */
+
+  /* Start Manfaat Ecoprint */
+  .button-manfaat {
+    margin-top: 0;
+  }
+  /* End Manfaat Ecoprint */
+
+  /* Start Teknik Ecoprint */
+  #teknik-ecoprint {
+    margin-top: 75px;
+  }
+  /* End Teknik Ecoprint */
+
+  /* Start Katalog Ecoprint */
+  .text-desc-katalog {
+    text-align: center;
+  }
+  /* End Katalog Ecoprint */
+
+  /* Start Galeri Produk*/
+  .text-quotes {
+    font-size: 25px;
+  }
+
+  .img-quotes {
+    width: 100px;
+  }
+  /* End Galeri Produk*/
+
+  /* Start Footer*/
+  .kontak,
+  .social-media {
+    margin-top: 25px;
+  }
+
+  /* End Footer*/
+}
+
+/* Untuk HP */
+@media screen and (max-width: 670px) {
+  .hero-tagline h4 {
+    line-height: 52px;
+    text-align: left;
+    font-size: 30px;
+  }
+
+  .hero-tagline p {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 200;
+  }
+
+  .img-hero {
+    width: 90%;
+  }
+
+  /* Start Tentang Kami */
+  .img-fluid-1,
+  .img-fluid-2,
+  .img-fluid-3 {
+    text-align: center;
+  }
+  /* End Tentang Kami */
+
+  /* Start Manfaat Ecoprint */
+  .text-title {
+    text-align: left;
+    font-size: 30px;
+    width: 95%;
+  }
+
+  .desc-ecoprint {
+    text-align: left;
+    font-size: 14px;
+    width: 95%;
+  }
+  /* End Manfaat Ecoprint */
+
+  /* Start Katalog Ecoprint */
+  .text-title-katalog {
+    font-size: 20px;
+  }
+
+  .text-desc-katalog {
+    text-align: left;
+    font-size: 30px;
+    line-height: 44px;
+  }
+  /* End Katalog Ecoprint */
+
+  /* Start Galeri Produk*/
+  .text-quotes {
+    font-size: 15px;
+  }
+
+  .img-quotes {
+    width: 50px;
+  }
+  /* End Galeri Produk*/
+
+  /* Start Footer*/
+  .informasi,
+  .kontak,
+  .social-media {
+    margin-top: 25px;
+  }
+
+  /* End Footer*/
+}

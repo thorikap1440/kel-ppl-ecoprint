@@ -1,0 +1,264 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Start CSS Navbar */
+.nav-color {
+  background-color: #d1dcc3;
+  transition: all 0.3s ease-in;
+}
+
+.nav-item {
+  font-weight: 700;
+  color: #203624;
+}
+
+.nav-link {
+  font-size: 18px;
+}
+
+.nav-link.active {
+  color: #497a53;
+}
+
+.button-masuk {
+  background-color: #203624;
+  color: #d1dcc3;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+}
+
+.button-daftar {
+  background-color: #af990c;
+  color: #d1dcc3;
+  font-weight: 600;
+  border-radius: 10px;
+  border: none;
+}
+/* End CSS Navbar */
+
+/* Start CSS Hero */
+#hero {
+  background-color: #d1dcc3;
+  height: 100vh;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+  /* margin-top: -57px; */
+}
+
+.hero-tagline h4 {
+  color: #2f401b;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 2px;
+  line-height: 40px;
+}
+
+.hero-tagline p {
+  font-weight: 500;
+  font-size: 30px;
+  letter-spacing: 2px;
+  color: #253215;
+}
+
+.img-hero {
+  width: 35%;
+}
+/* End CSS Hero */
+
+/* Start CSS Tentang Kami */
+.tentang-kami {
+  background-color: #e9eee2;
+  padding: 50px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border-radius: 10px;
+}
+
+.img-fluid-1 {
+  padding-bottom: 25px;
+}
+
+.img-fluid-2 {
+  margin-top: 23px;
+}
+
+.tentang-kami-tagline h3 {
+  color: #698f3c;
+  font-size: 25px;
+  text-shadow: 1px 0px 2px rgba(0, 0, 0, 0.5);
+  line-height: 40px;
+}
+
+.tentang-kami-tagline h4 {
+  color: #887709;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 36px;
+}
+
+.button-tentang-kami {
+  background-color: #d1dcc3;
+  color: #887709;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+/* End CSS Tentang Kami */
+
+/* Start CSS Manfaat Ecoprint */
+.text-title {
+  color: #698f3c;
+  font-size: 40px;
+  width: 85%;
+  margin: 0 auto;
+}
+
+.desc-ecoprint {
+  color: #797061;
+  font-size: 15px;
+  line-height: 20px;
+  width: 85%;
+  margin: 0 auto;
+  padding-top: 15px;
+}
+
+.number-manfaat {
+  font-size: 180px;
+  font-weight: 900;
+  text-align: center;
+  color: #cabba1;
+}
+
+.card-body {
+  line-height: 20px;
+}
+
+.card-body .card-title {
+  font-size: 24px;
+  color: #5b5448;
+  line-height: 40px;
+}
+
+.card-body .card-text {
+  color: #b6a891;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.button-manfaat {
+  margin-top: -60px;
+  color: #887709;
+  background-color: #cabba1;
+}
+/* End CSS Manfaat Ecoprint */
+
+/* Start CSS Teknik Ecoprint */
+.card-title-teknik {
+  color: #4f6b2d;
+  font-size: 32px;
+}
+
+.card-text-teknik {
+  color: #b6a891;
+  line-height: 25px;
+}
+/* End CSS Teknik Ecoprint */
+
+/* Start CSS Katalog Produk */
+.text-title-katalog {
+  color: #887709;
+  font-size: 24px;
+}
+
+.text-desc-katalog {
+  color: #698f3c;
+  font-size: 40px;
+  line-height: 60px;
+}
+
+.card-body .card-title-katalog {
+  color: #2f401b;
+  font-size: 18px;
+}
+
+.card-body .card-text-katalog {
+  color: #3f5624;
+  font-weight: 700;
+}
+/* End CSS Katalog Produk */
+
+/* Start CSS Galeri Produk */
+.sample-title {
+  color: #fff;
+  font-weight: 700;
+  font-size: 48px;
+  padding-left: 40px;
+}
+
+.text-quotes {
+  color: #698f3c;
+  font-size: 33px;
+  font-weight: 700;
+  margin: 0 auto;
+}
+/* End CSS Galeri Produk */
+
+/* Start CSS Footer */
+footer {
+  background-color: #2f401b;
+}
+
+.title-footer {
+  color: #e9e9e9;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.informasi li {
+  list-style: none;
+}
+
+.informasi li a {
+  color: #e9e9e9;
+  font-size: 14px;
+  text-decoration: none;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.informasi a:hover {
+  color: #698f3c;
+}
+
+.kontak a {
+  color: #e9e9e9;
+  font-size: 14px;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.social-media a {
+  text-decoration: none;
+  float: left;
+}
+
+.social-media img {
+  margin-right: 25px;
+}
+
+.copyright {
+  width: 100%;
+  height: 80px;
+  background-color: #2f401b;
+  box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset,
+    rgba(0, 0, 0, 0.1) 0px 0px 0px 1px;
+}
+
+.copyright p {
+  color: #bcbcbc;
+  font-size: 13px;
+  text-align: center;
+  line-height: 80px;
+}
+/* End CSS Footer */
