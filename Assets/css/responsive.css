@@ -127,5 +127,9 @@
     margin-top: 25px;
   }
 
+  .copyright p {
+    font-size: 9px;
+  }
+
   /* End Footer*/
 }
