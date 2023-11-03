@@ -77,10 +77,18 @@
   }
 
   /* Start Tentang Kami */
+  .tentang-kami {
+    padding: 30px 18px;
+  }
+
   .img-fluid-1,
   .img-fluid-2,
   .img-fluid-3 {
     text-align: center;
+  }
+
+  .tentang-kami-tagline p {
+    width: 90%;
   }
   /* End Tentang Kami */
 
