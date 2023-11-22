@@ -21,6 +21,10 @@ body {
   color: #497a53;
 }
 
+.nav-link:hover {
+  color: #497a53;
+}
+
 .button-masuk {
   background-color: #203624;
   color: #d1dcc3;
@@ -109,9 +113,78 @@ body {
   color: #fff;
   font-weight: 700;
 }
+.dropdown-menu {
+  background-color: #497a53;
+  padding: 0px;
+  margin: 0;
+}
+.dropdown-item {
+  text-decoration: none;
+  color: #f1f1f1;
+  padding: 12px 20px;
+}
+.dropdown-item:hover {
+  background-color: #29452f;
+  color: #f1f1f1;
+}
+
+/* End CSS Navbar */
+
+/* Start CSS Tentang Kami */
+
+.tentang-ecoprint {
+  padding-top: 80px;
+  padding-bottom: 75px;
+}
+
+.img-tentangkami {
+  background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 40.13%,
+      rgba(255, 255, 255, 0.89) 86%,
+      #fff 99.82%
+    ),
+    url("../img/Batik-Ecoprint 1.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.garis {
+  width: 10%;
+  height: 4px;
+  background-color: #5f8136;
+  border-radius: 10px;
+}
+
+.tentang-ecoprint-tagline h3 {
+  padding-left: 20px;
+  color: #698f3c;
+  font-size: 19px;
+  line-height: 30px;
+}
+
+.tentang-ecoprint-tagline h4 {
+  color: #887709;
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 32px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.tentang-ecoprint-tagline p {
+  text-align: justify;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
 /* End CSS Tentang Kami */
 
 /* Start CSS Manfaat Ecoprint */
+
 .text-title {
   color: #698f3c;
   font-size: 40px;
@@ -122,6 +195,10 @@ body {
 .desc-ecoprint {
   color: #797061;
   font-size: 15px;
+}
+.desc-lkp-ecoprint {
+  color: #797061;
+  font-size: 16px;
   line-height: 20px;
   width: 85%;
   margin: 0 auto;
@@ -214,6 +291,56 @@ body {
   margin: 0 auto;
 }
 /* End CSS Galeri Produk */
+.manfaat-eco {
+  line-height: 20px;
+  background-color: #f0f4ec;
+  padding: 40px 60px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  border-radius: 10px;
+}
+
+.manfaat-eco .manfaat-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #4f6b2d;
+  line-height: 40px;
+}
+
+.manfaat-eco .manfaat-text {
+  color: #b6a891;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 24px;
+}
+/* End CSS Manfaat Ecoprint */
+
+/* teknik ecoprint */
+
+.teknik-ecoprint {
+  padding: 0;
+}
+
+.vl {
+  border-left: 8px solid #547230;
+  height: 80px;
+  border-radius: 10px;
+  margin-right: 90px;
+}
+
+.img-teknik {
+  width: 300px;
+}
+.teknik {
+  color: #4f6b2d;
+}
+
+.teknik h4 {
+  font-weight: bold;
+}
+
+.teknik-title {
+  color: #b6a891;
+}
 
 /* Start CSS Footer */
 footer {

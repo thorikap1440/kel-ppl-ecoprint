@@ -49,6 +49,68 @@
   }
   /* End Galeri Produk*/
 
+  /* Start tentang ecoprint*/
+  .tentang-ecoprint {
+    padding: 10px;
+    padding-top: 70px;
+  }
+
+  .img-tentangkami {
+    background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0) 40.13%,
+        rgba(255, 255, 255, 0.89) 86%,
+        #fff 99.82%
+      ),
+      url("../img/Batik-Ecoprint 1.png");
+    height: 480px;
+  }
+
+  .tentang-ecoprint-tagline p {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  /* End tentang ecoprint */
+
+  /* Start Manfaat Ecoprint*/
+  .manfaat-eco {
+    padding: 30px 25px;
+  }
+
+  .desc-lkp-ecoprint {
+    font-size: 14px;
+  }
+
+  .manfaat-eco .manfaat-title {
+    padding-top: 20px;
+    text-align: center;
+  }
+  .manfaat-eco .manfaat-text {
+    font-size: 14px;
+  }
+  /* End Manfaat Ecoprint*/
+
+  /* Teknik Ecoprint */
+  .vl {
+    border-left: none;
+    margin-right: 0;
+  }
+
+  .teknik h4 {
+    margin: 0 auto;
+  }
+
+  .teknik-title {
+    font-size: 14px;
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .img-teknik {
+    margin: 25px 0px;
+  }
+  /* End Teknik Ecoprint */
+
   /* Start Footer*/
   .kontak,
   .social-media {
@@ -93,6 +155,25 @@
   /* End Tentang Kami */
 
   /* Start Manfaat Ecoprint */
+
+  /* Start tentang ecoprint*/
+  .img-tentangkami {
+    height: 400px;
+  }
+  /* End tentang ecoprint*/
+
+  /* Teknik Ecoprint */
+  .teknik-title {
+    width: 100%;
+  }
+  /* End Teknik Ecoprint */
+
+  .img-manfaat {
+    width: 100%;
+    max-width: 200px; /* Atur lebar maksimum gambar untuk layar mobile */
+    margin-bottom: 200px; /* Atur margin bawah untuk memisahkan gambar dan teks */
+  }
+
   .text-title {
     text-align: left;
     font-size: 30px;
@@ -127,6 +208,10 @@
     width: 50px;
   }
   /* End Galeri Produk*/
+  .desc-lkp-ecoprint {
+    text-align: left;
+    width: 95%;
+  }
 
   /* Start Footer*/
   .informasi,
