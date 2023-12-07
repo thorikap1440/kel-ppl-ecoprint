@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Belanja</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../Assets/css/style.css" />
+    <link rel="stylesheet" href="../Assets/css/responsive.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Viga&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar nav-color navbar-expand-lg fixed-top py-3 shadow-sm">
+      <div class="container-lg">
+        <a class="navbar-brand" href="#">
+          <img
+            src="Assets/img/Logo Icon.png"
+            alt=""
+            width="30"
+            class="me-2"
+          />LOGO ECOPRINT</a
+        >
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="bi bi-text-paragraph text-black"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item mx-3">
+              <a
+                class="nav-link"
+                onclick="setActive('../index')"
+                href="../index.html"
+                aria-current="page"
+                >Beranda</a
+              >
+            </li>
+            <li class="nav-item mx-3">
+              <div class="dropdown">
+                <button
+                  class="nav-link dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Edukasi
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./edukasi1.html"
+                      >Tentang Ecoprint & Manfaat</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./edukasi2.html"
+                      >Teknik Ecoprint</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link" onclick="setActive('belanja')" href="#"
+                >Berbelanja</a
+              >
+            </li>
+          </ul>
+
+          <div>
+            <button class="button-masuk mx-2 px-4 py-2">MASUK</button>
+            <button class="button-daftar px-4 py-2">DAFTAR</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <section>
+      <div class="search-form">
+        <div class="container-lg">
+          <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-lg-3">
+              <div class="input-group flex-nowrap">
+                <span
+                  class="input-group-text border-0"
+                  style="background-color: #E9EEE2;"
+                  id="addon-wrapping"
+                  ><img
+                    src="../Assets/img/img-belanja/grommet.png"
+                    alt=""
+                    style=" width: 26px; height: 27px;"
+                /></span>
+                <input
+                  type="text"
+                  class="form-control select-kategori"
+                  placeholder="Telusuri semua kategori"
+                  aria-label="Kategori"
+                  aria-describedby="addon-wrapping"
+                  style="background-color: #E9EEE2;"
+                />
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control select-kategori p-2 w-25 px-4"
+                  placeholder="Cari..."
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  style="background-color: #E9EEE2;"
+                />
+                <select
+                  class="form-select select-kategori"
+                  id="pageSelect"
+                  onchange="changePage()"
+                  aria-label="Default select example"
+                >
+                  <option selected>Semua Kategori</option>
+                  <option value="../pages/kategori/wanita">Wanita</option>
+                  <option value="2">Pria</option>
+                  <option value="3">Baju</option>
+                  <option value="4">Tas</option>
+                  <option value="5">Alas Kaki</option>
+                  <option value="6">Lainnya</option>
+                </select>
+                <button
+                  class="btn border-0"
+                  style="background-color: #698F3C; border-radius: 0px 8px 8px 0px;"
+                >
+                  <i class="bi bi-search text-white"></i>
+                </button>
+
+                <button class="ms-5 border-0 bg-transparent">
+                  <img
+                    src="../Assets/img/img-belanja/icon-keranjang.png"
+                    alt=""
+                    width="40px"
+                    height="37px"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-4">
+      <div class="container-lg">
+        <div class="hero-belanja">
+          <div class="row g-3 d-flex justify-content-center">
+            <div class="col-lg-6 col-md-6 d-flex align-content-center">
+              <img
+                src="../Assets/img/img-belanja/img-hero1.png"
+                alt=""
+                class="img-fluid img1-heroBelanja"
+                width="100%"
+              />
+            </div>
+
+            <div class="col-lg-5 col-md-6">
+              <img
+                src="../Assets/img/img-belanja/img-hero2.png"
+                alt=""
+                class="img-fluid img2-heroBelanja"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="bg-katagori-wrapper">
+        <div class="container-lg position-relative">
+          <div class="row mt-4">
+            <div
+              class="kategori-wrapper d-flex position-absolute top-0 start-50 translate-middle"
+            >
+              <div class="col-md-2">
+                <div class="text-center">
+                  <img
+                    src="../Assets/img/img-belanja/kategori/wanita.png"
+                    alt=""
+                  />
+                  <h5 class="text-white mt-4">Wanita</h5>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="text-center">
+                  <img
+                    src="../Assets/img/img-belanja/kategori/pria.png"
+                    alt=""
+                  />
+                  <h5 class="text-white mt-4">Pria</h5>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="text-center">
+                  <img
+                    src="../Assets/img/img-belanja/kategori/baju.png"
+                    alt=""
+                  />
+                  <h5 class="text-white mt-4">Baju</h5>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="text-center">
+                  <img
+                    src="../Assets/img/img-belanja/kategori/tas.png"
+                    alt=""
+                  />
+                  <h5 class="text-white mt-4">Tas</h5>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="text-center">
+                  <img
+                    src="../Assets/img/img-belanja/kategori/alas-kaki.png"
+                    alt=""
+                  />
+                  <h5 class="text-white mt-4">Alas Kaki</h5>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="text-center">
+                  <a href="#">
+                    <img
+                      src="../Assets/img/img-belanja/kategori/lainnya.png"
+                      alt=""
+                    />
+                  </a>
+                  <h5 class="text-white mt-4">lainnya</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="title-belanja">Produk Populer</h3>
+          <div class="row g-3 row-cols-lg-5 row-cols-md-3 row-cols-1 mt-2">
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-1.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Tas</span>
+                  <h5>Kaliko Pouch</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.7)</span>
+                  <p class="pt-2 sub-text-produk">Kaliko textiles</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fw-bold m-1">Rp.80.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-2.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Alas Kaki</span>
+                  <h5>Eco Flat Sandals</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.6)</span>
+                  <p class="pt-2 sub-text-produk">Footprint shop</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fw-bold m-1">Rp.150.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-3.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Lainnya</span>
+                  <h5>Floral Scraft</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.9)</span>
+                  <p class="pt-2 sub-text-produk">Nature shop</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fw-bold m-1">Rp.180.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-4.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Wanita</span>
+                  <h5>Sleeveless Blouse</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.7)</span>
+                  <p class="pt-2 sub-text-produk">Keyla wear</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fw-bold m-1">Rp.170.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-5.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Alas Kaki</span>
+                  <h5>Kaos Kaki Floral</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.6)</span>
+                  <p class="pt-2 sub-text-produk">Footprint shop</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fw-bold m-1">Rp.30.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-6.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Alas Kaki</span>
+                  <h5>Eco Leather Sandals</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.8)</span>
+                  <p class="pt-2 sub-text-produk">Footprint Shop</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fw-bold m-1">Rp.250.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-7.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Tas</span>
+                  <h5>Woody Multibag</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.8)</span>
+                  <p class="pt-2 sub-text-produk">Eco Store</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fw-bold m-1">Rp.170.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-8.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Lainnya</span>
+                  <h5>Diamond Eco Scraft</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.9)</span>
+                  <p class="pt-2 sub-text-produk">Cultural Idn</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fw-bold m-1">Rp.190.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-9.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Wanita</span>
+                  <h5>Top Blazer Ecoprint</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.9)</span>
+                  <p class="pt-2 sub-text-produk">Cultural Idn</p>
+                  <div
+                    class="d-flex align-items-center justify-content-between"
+                  >
+                    <p class="fw-bold m-1">Rp.300.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card card-produk p-2 border-0">
+                <img
+                  src="../Assets/img/img-belanja/produk-populer/img-10.png"
+                  class="card-img-top"
+                  alt="img-1"
+                />
+                <div class="card-body-produk p-2">
+                  <span>Pria</span>
+                  <h5>Celana Santai Ecoprint</h5>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>(4.7)</span>
+                  <p class="pt-2 sub-text-produk">Keyla wear</p>
+                  <div class="d-flex justify-content-between">
+                    <p class="fw-bold m-1">Rp.200.000</p>
+                    <button class="btn-add-product" type="button">
+                      <i class="bi bi-cart-dash"></i>
+                      Tambah
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div id="myCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+        <div class="carousel-inner p-2">
+          <div class="container">
+            <h3 class="title-belanja" style="margin-top: 0;">
+              Terlaris Setiap Hari
+            </h3>
+            <div class="carousel-item active">
+              <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 mt-4">
+                <div class="col">
+                  <div
+                    class="card card-terlaris border-0 pt-5 pb-5"
+                    style="background-color: #D1DCC3;"
+                  >
+                    <img
+                      src="../Assets/img/terlaris/img1.png"
+                      alt="Card Image"
+                      width="65%"
+                      class="mx-auto"
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title-carousel mx-auto">
+                        Warnai Hidup Anda, Lindungi Bumi dengan Ecoprint.
+                      </h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card card-produk border-0 p-2">
+                    <img
+                      src="../Assets/img/terlaris/img2.png"
+                      alt="Card Image"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Autumn Blouse</h5>
+                      <img
+                        src="../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Cultural Idn</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold">Rp.250.000</p>
+                        <p class="teks-terjual">4.3rb terjual</p>
+                      </div>
+                      <button class="btn-add-product w-100" type="button">
+                        <i class="bi bi-cart-dash fs-5 px-2"></i>
+                        Tambah Ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card card-produk border-0 p-2">
+                    <img
+                      src="../Assets/img/terlaris/img3.png"
+                      alt="Card Image"
+                    />
+                    <div class="card-body-produk">
+                      <span>Lainya</span>
+                      <h5>Premium Scraft</h5>
+                      <img
+                        src="../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.6)</span>
+                      <p class="pt-2" style="font-size: 14px;">Keyla wear</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold">Rp.160.000</p>
+                        <p class="teks-terjual">250 terjual</p>
+                      </div>
+                      <button class="btn-add-product w-100" type="button">
+                        <i class="bi bi-cart-dash fs-5 px-2"></i>
+                        Tambah Ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card card-produk border-0 p-2">
+                    <img
+                      src="../Assets/img/terlaris/img4.png"
+                      alt="Card Image"
+                    />
+                    <div class="card-body-produk">
+                      <span>Tas</span>
+                      <h5>Winter Ecobag</h5>
+                      <img
+                        src="../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Eco Store</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold">Rp.170.000</p>
+                        <p class="teks-terjual">2.3rb terjual</p>
+                      </div>
+                      <button class="btn-add-product w-100" type="button">
+                        <i class="bi bi-cart-dash fs-5 px-2"></i>
+                        Tambah Ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <!-- Repeat this block for each card -->
+              </div>
+            </div>
+          </div>
+          <!-- Repeat this block for each carousel item -->
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 mt-4">
+                <div class="col">
+                  <div class="card card-produk border-0 p-2">
+                    <img
+                      src="../Assets/img/terlaris/img2.png"
+                      alt="Card Image"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Autumn Blouse</h5>
+                      <img
+                        src="../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Cultural Idn</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold">Rp.250.000</p>
+                        <p class="teks-terjual">4.3rb terjual</p>
+                      </div>
+                      <button class="btn-add-product w-100" type="button">
+                        <i class="bi bi-cart-dash fs-5 px-2"></i>
+                        Tambah Ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card card-produk border-0 p-2">
+                    <img
+                      src="../Assets/img/terlaris/img5.png"
+                      alt="Card Image"
+                    />
+                    <div class="card-body-produk">
+                      <span>Lainnya</span>
+                      <h5>Cute Eco Scruchies</h5>
+                      <img
+                        src="../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.8)</span>
+                      <p class="pt-2" style="font-size: 14px;">Keyla Wear</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold">Rp.100.000</p>
+                        <p class="teks-terjual">2.6rb terjual</p>
+                      </div>
+                      <button class="btn-add-product w-100" type="button">
+                        <i class="bi bi-cart-dash fs-5 px-2"></i>
+                        Tambah Ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card card-produk border-0 p-2">
+                    <img
+                      src="../Assets/img/terlaris/img4.png"
+                      alt="Card Image"
+                    />
+                    <div class="card-body-produk">
+                      <span>Tas</span>
+                      <h5>Winter Ecobag</h5>
+                      <img
+                        src="../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Eco Store</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold">Rp.170.000</p>
+                        <p class="teks-terjual">2.3rb terjual</p>
+                      </div>
+                      <button class="btn-add-product w-100" type="button">
+                        <i class="bi bi-cart-dash fs-5 px-2"></i>
+                        Tambah Ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card card-produk border-0 p-2">
+                    <img
+                      src="../Assets/img/terlaris/img3.png"
+                      alt="Card Image"
+                    />
+                    <div class="card-body-produk">
+                      <span>Lainya</span>
+                      <h5>Premium Scraft</h5>
+                      <img
+                        src="../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.6)</span>
+                      <p class="pt-2" style="font-size: 14px;">Keyla wear</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold">Rp.160.000</p>
+                        <p class="teks-terjual">250 terjual</p>
+                      </div>
+                      <button class="btn-add-product w-100" type="button">
+                        <i class="bi bi-cart-dash fs-5 px-2"></i>
+                        Tambah Ke Keranjang
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="prev"
+        >
+          <img
+            src="../Assets/img/terlaris/arrow-left.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="next"
+        >
+          <img
+            src="../Assets/img/terlaris/arrow-right.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <div class="container-lg">
+        <div class="card support-us border-0">
+          <div class="row d-flex align-items-center">
+            <div class="col-md-7">
+              <h5>
+                Setiap pembelian Anda mendukung
+                <span style="color: #AF990C;">keberlanjutan</span>. Warna hidup
+                Anda,
+                <span style="color: #AF990C;">lestarikan bumi</span>
+                kita bersama!
+              </h5>
+              <p>
+                Beli sekarang di <span style="color: #AF990C;">Ecoprint!</span>
+              </p>
+            </div>
+
+            <div class="col-md-5 d-flex justify-content-center">
+              <img src="../Assets/img/img-belanja/girl-with-cart.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-5">
+      <div class="container-lg">
+        <div class="layanan">
+          <div class="row row-cols-lg-5 row-cols-md-3 row-cols-1 g-4">
+            <div class="col">
+              <div class="card-layanan d-flex align-items-center p-2">
+                <img src="../Assets/img/img-belanja/price tags.png" alt="" />
+                <p>
+                  Harga & penawaran terbaik <br />
+                  <span style="font-weight: 400;">Pesan lebih banyak</span>
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card-layanan d-flex align-items-center px-3">
+                <img src="../Assets/img/img-belanja/delivery bag.png" alt="" />
+                <p>
+                  Pengiriman gratis <br />
+                  <span style="font-weight: 400;">Layanan luar biasa 24/7</span>
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card-layanan d-flex align-items-center px-3">
+                <img src="../Assets/img/img-belanja/yellow cart.png" alt="" />
+                <p>
+                  Penawaran harian <br />
+                  <span style="font-weight: 400;">Ketika anda mendaftar</span>
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card-layanan d-flex align-items-center px-3">
+                <img
+                  src="../Assets/img/img-belanja/discount coupons.png"
+                  alt=""
+                />
+                <p class="px-2">
+                  Bermacam-macam<br />
+                  <span style="font-weight: 400;">Diskon besar</span>
+                </p>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card-layanan d-flex align-items-center px-2">
+                <img src="../Assets/img/img-belanja/payment.png" alt="" />
+                <p>
+                  Pembayaran yang aman <br />
+                  <span style="font-weight: 400;"
+                    >Segala bentuk pembayaran</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container-lg">
+        <div
+          class="row p-5 mt-5"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+          <div class="col-lg-3 col-md-6">
+            <img src="../Assets/img/Image.png" alt="" />
+          </div>
+          <div class="col-lg-3 col-md-6 informasi">
+            <h5 class="title-footer">Informasi</h5>
+            <li class="mb-2">
+              <a href="#hero">Beranda</a>
+            </li>
+            <li class="mb-2">
+              <a href="#edukasi">Edukasi</a>
+            </li>
+            <li class="mb-2">
+              <a href="#manfaat-ecoprint">Manfaat</a>
+            </li>
+            <li class="mb-2">
+              <a href="#teknik-ecoprint">Teknik</a>
+            </li>
+            <li class="mb-2">
+              <a href="#berbelanja">Berbelanja</a>
+            </li>
+          </div>
+
+          <div class="col-lg-3 col-md-6 kontak">
+            <h5 class="title-footer">Kontak</h5>
+            <div class="mb-3 d-flex align-items-center">
+              <img src="../Assets/img/icon/Alamat Icon.png" alt="" />
+              <a href="#"
+                >Jl. Pelajar Pejuang 123 Majalaya Purwokerto Indonesia</a
+              >
+            </div>
+
+            <div class="mb-3">
+              <img src="../Assets/img/icon/Whatsapp icon.png" alt="" />
+              <a href="#">0822-7891-5251</a>
+            </div>
+
+            <div class="mb-3">
+              <img src="../Assets/img/icon/Email Icon.png" alt="" />
+              <a href="#">ecoprintPPL@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 social-media">
+            <h5 class="title-footer">Social Media</h5>
+            <a href="#">
+              <img src="../Assets/img/icon/facebook.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../Assets/img/icon/twt.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../Assets/img/icon/linkedin.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../Assets/img/icon/pinterest.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 copyright">
+        <p>
+          Copyright &copy; 2023 Kelompok PPL Ecoprint ITTP | All Right Reserved
+        </p>
+      </div>
+    </footer>
+    <!-- Akhir Footer -->
+
+    <script src="../Assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

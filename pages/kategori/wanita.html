@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wanita</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../Assets/css/style.css" />
+    <link rel="stylesheet" href="../../Assets/css/responsive.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Viga&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar nav-color navbar-expand-lg fixed-top py-3 shadow-sm">
+      <div class="container-lg">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../../Assets/img/Logo Icon.png"
+            alt=""
+            width="30"
+            class="me-2"
+          />LOGO ECOPRINT</a
+        >
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="bi bi-text-paragraph text-black"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item mx-3">
+              <a
+                class="nav-link"
+                onclick="setActive('../index')"
+                href="../../index.html"
+                aria-current="page"
+                >Beranda</a
+              >
+            </li>
+            <li class="nav-item mx-3">
+              <div class="dropdown">
+                <button
+                  class="nav-link dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Edukasi
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="../edukasi1.html"
+                      >Tentang Ecoprint & Manfaat</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="../edukasi2.html"
+                      >Teknik Ecoprint</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item mx-3">
+              <a
+                class="nav-link"
+                onclick="setActive('belanja')"
+                href="../belanja.html"
+                >Berbelanja</a
+              >
+            </li>
+          </ul>
+
+          <div>
+            <button class="button-masuk mx-2 px-4 py-2">MASUK</button>
+            <button class="button-daftar px-4 py-2">DAFTAR</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <!-- Search Form -->
+    <section>
+      <div class="search-form">
+        <div class="container-lg">
+          <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-lg-3">
+              <div class="input-group flex-nowrap">
+                <span
+                  class="input-group-text border-0"
+                  style="background-color: #E9EEE2;"
+                  id="addon-wrapping"
+                  ><img
+                    src="../../Assets/img/img-belanja/grommet.png"
+                    alt=""
+                    style=" width: 26px; height: 27px;"
+                /></span>
+                <input
+                  type="text"
+                  class="form-control select-kategori"
+                  placeholder="Telusuri semua kategori"
+                  aria-label="Kategori"
+                  aria-describedby="addon-wrapping"
+                  style="background-color: #E9EEE2;"
+                />
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control select-kategori p-2 w-25 px-4"
+                  placeholder="Cari..."
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  style="background-color: #E9EEE2;"
+                />
+                <select
+                  class="form-select select-kategori"
+                  id="pageSelect"
+                  onchange="changePage()"
+                  aria-label="Default select example"
+                >
+                  <option selected>Semua Kategori</option>
+                  <option value="wanita">Wanita</option>
+                  <option value="2">Pria</option>
+                  <option value="3">Baju</option>
+                  <option value="4">Tas</option>
+                  <option value="5">Alas Kaki</option>
+                  <option value="6">Lainnya</option>
+                </select>
+                <button
+                  class="btn border-0"
+                  style="background-color: #698F3C; border-radius: 0px 8px 8px 0px;"
+                >
+                  <i class="bi bi-search text-white"></i>
+                </button>
+
+                <button class="ms-5 border-0 bg-transparent">
+                  <img
+                    src="../../Assets/img/img-belanja/icon-keranjang.png"
+                    alt=""
+                    width="40px"
+                    height="37px"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Search Form -->
+
+    <section class="mt-5">
+      <div class="container-lg">
+        <div class="semua-kategori">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card-kategori" id="categoryMenu">
+                <h5 class="title-kategori">Semua Ketegori</h5>
+                <div
+                  class="card-sub-kategori d-flex align-items-center"
+                  onclick="toggleCategory('wanita')"
+                >
+                  <img
+                    src="../../Assets/img/img-belanja/kategori/wanita.png"
+                    alt="Circle Image"
+                  />
+                  <span class="text-title-kategori">Wanita</span>
+                  <span class="text-small-kategori">(123)</span>
+                </div>
+                <a href="../kategori/pria.html">
+                  <div
+                    class="card-sub-kategori d-flex align-items-center"
+                    onclick="toggleCategory('pria')"
+                  >
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/pria.png"
+                      alt="Circle Image"
+                    />
+                    <span class="text-title-kategori">Pria</span>
+                    <span class="text-small-kategori">(117)</span>
+                  </div>
+                </a>
+                <div class="card-sub-kategori d-flex align-items-center">
+                  <img
+                    src="../../Assets/img/img-belanja/kategori/baju.png"
+                    alt="Circle Image"
+                  />
+                  <span class="text-title-kategori">Baju</span>
+                  <span class="text-small-kategori">(215)</span>
+                </div>
+                <div class="card-sub-kategori d-flex align-items-center">
+                  <img
+                    src="../../Assets/img/img-belanja/kategori/tas.png"
+                    alt="Circle Image"
+                  />
+                  <span class="text-title-kategori">Tas</span>
+                  <span class="text-small-kategori">(104)</span>
+                </div>
+                <div class="card-sub-kategori d-flex align-items-center">
+                  <img
+                    src="../../Assets/img/img-belanja/kategori/alas-kaki.png"
+                    alt="Circle Image"
+                  />
+                  <span class="text-title-kategori">Alas Kaki</span>
+                  <span class="text-small-kategori">(98)</span>
+                </div>
+                <div class="card-sub-kategori d-flex align-items-center">
+                  <img
+                    src="../../Assets/img/img-belanja/kategori/lainnya.png"
+                    alt="Circle Image"
+                  />
+                  <span class="text-title-kategori">Lainnya</span>
+                  <span class="text-small-kategori">(229)</span>
+                </div>
+
+                <label for="customRange2" class="title-kategori mt-5 mb-2"
+                  >Filter Harga</label
+                >
+                <div class="d-flex justify-content-between">
+                  <p class="price-range">10rb</p>
+                  <p class="price-range">500rb</p>
+                </div>
+                <input
+                  type="range"
+                  class="form-range custom-range"
+                  min="0"
+                  max="100"
+                  id="customRange2"
+                />
+              </div>
+            </div>
+
+            <div class="col-lg-8">
+              <div class="row row-cols-md-3 row-cols-1" id="cardContainer">
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-1.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Dira Women Wear</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Keyla Wear</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.200.000</p>
+                        <p class="teks-terjual m-0">490 terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-2.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Sleveless Blouse</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Keyla Wear</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.170.000</p>
+                        <p class="teks-terjual m-0">290 terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-3.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Top Blazer Ecoprint</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Cultural Idn</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.300.000</p>
+                        <p class="teks-terjual m-0">10rb terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-4.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Autumn Blouse</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Cultural Idn</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.250.000</p>
+                        <p class="teks-terjual m-0">4,3rb terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-5.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Floral Daster</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Nature Shop</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.110.000</p>
+                        <p class="teks-terjual m-0">2rb terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-6.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Leaf Cardi</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Eco Store</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.140.000</p>
+                        <p class="teks-terjual m-0">705 terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-7.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Foliage Vest</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Eco Store</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.125.000</p>
+                        <p class="teks-terjual m-0">508 terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-8.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Ecoprint Tunic</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Cultural Idn</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.152.500</p>
+                        <p class="teks-terjual m-0">627 terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-9.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Gardenia Dress</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Keyla Wear</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.135.000</p>
+                        <p class="teks-terjual m-0">903 terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-10.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Floral-print Dress</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.9)</span>
+                      <p class="pt-2" style="font-size: 14px;">Cultural Idn</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.110.000</p>
+                        <p class="teks-terjual m-0">270 terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-11.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Outer Kimono</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.7)</span>
+                      <p class="pt-2" style="font-size: 14px;">Keyla Wear</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.210.000</p>
+                        <p class="teks-terjual m-0">1,2 terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="card card-produk-kategori border-0 p-2">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/img-12.png"
+                      alt="Card Image"
+                      class="w-100"
+                    />
+                    <div class="card-body-produk">
+                      <span>Wanita</span>
+                      <h5>Women Blouse</h5>
+                      <img
+                        src="../../Assets/img/img-belanja/produk-populer/rating.png"
+                        alt=""
+                      />
+                      <span>(4.8)</span>
+                      <p class="pt-2" style="font-size: 14px;">Nature Shop</p>
+                      <div
+                        class="d-flex align-items-center justify-content-between"
+                      >
+                        <p class="fw-bold m-0">Rp.140.000</p>
+                        <p class="teks-terjual m-0">150 terjual</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="paginationContainer">
+                <ul class="pagination" id="paginationList">
+                  <li class="page-item disabled" id="prevPageBtn">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/left-arrow.png"
+                      alt=""
+                      width="15"
+                    />
+                  </li>
+                  <!-- Pagination items will be added dynamically using JavaScript -->
+                  <li class="page-item" id="nextPageBtn">
+                    <img
+                      src="../../Assets/img/img-belanja/kategori/right-arrow.png"
+                      alt=""
+                      width="15"
+                    />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container-lg">
+        <div
+          class="row p-5 mt-5"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+          <div class="col-lg-3 col-md-6">
+            <img src="../../Assets/img/Image.png" alt="" />
+          </div>
+          <div class="col-lg-3 col-md-6 informasi">
+            <h5 class="title-footer">Informasi</h5>
+            <li class="mb-2">
+              <a href="#hero">Beranda</a>
+            </li>
+            <li class="mb-2">
+              <a href="#edukasi">Edukasi</a>
+            </li>
+            <li class="mb-2">
+              <a href="#manfaat-ecoprint">Manfaat</a>
+            </li>
+            <li class="mb-2">
+              <a href="#teknik-ecoprint">Teknik</a>
+            </li>
+            <li class="mb-2">
+              <a href="#berbelanja">Berbelanja</a>
+            </li>
+          </div>
+
+          <div class="col-lg-3 col-md-6 kontak">
+            <h5 class="title-footer">Kontak</h5>
+            <div class="mb-3 d-flex align-items-center">
+              <img src="../../Assets/img/icon/Alamat Icon.png" alt="" />
+              <a href="#"
+                >Jl. Pelajar Pejuang 123 Majalaya Purwokerto Indonesia</a
+              >
+            </div>
+
+            <div class="mb-3">
+              <img src="../../Assets/img/icon/Whatsapp icon.png" alt="" />
+              <a href="#">0822-7891-5251</a>
+            </div>
+
+            <div class="mb-3">
+              <img src="../../Assets/img/icon/Email Icon.png" alt="" />
+              <a href="#">ecoprintPPL@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 social-media">
+            <h5 class="title-footer">Social Media</h5>
+            <a href="#">
+              <img src="../../Assets/img/icon/facebook.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../../Assets/img/icon/twt.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../../Assets/img/icon/linkedin.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../../Assets/img/icon/pinterest.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 copyright">
+        <p>
+          Copyright &copy; 2023 Kelompok PPL Ecoprint ITTP | All Right Reserved
+        </p>
+      </div>
+    </footer>
+    <!-- Akhir Footer -->
+
+    <script src="../../Assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

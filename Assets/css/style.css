@@ -8,6 +8,10 @@ body {
   transition: all 0.3s ease-in;
 }
 
+.navbar-nav .nav-item.active .nav-link {
+  color: black;
+}
+
 .nav-item {
   font-weight: 700;
   color: #203624;
@@ -17,9 +21,9 @@ body {
   font-size: 18px;
 }
 
-.nav-link.active {
-  color: #497a53;
-}
+/* .nav-link .active {
+  color: red;
+} */
 
 .nav-link:hover {
   color: #497a53;
@@ -39,6 +43,21 @@ body {
   font-weight: 600;
   border-radius: 10px;
   border: none;
+}
+
+.dropdown-menu {
+  background-color: #497a53;
+  padding: 0px;
+  margin: 0;
+}
+.dropdown-item {
+  text-decoration: none;
+  color: #f1f1f1;
+  padding: 12px 20px;
+}
+.dropdown-item:hover {
+  background-color: #29452f;
+  color: #f1f1f1;
 }
 /* End CSS Navbar */
 
@@ -113,78 +132,9 @@ body {
   color: #fff;
   font-weight: 700;
 }
-.dropdown-menu {
-  background-color: #497a53;
-  padding: 0px;
-  margin: 0;
-}
-.dropdown-item {
-  text-decoration: none;
-  color: #f1f1f1;
-  padding: 12px 20px;
-}
-.dropdown-item:hover {
-  background-color: #29452f;
-  color: #f1f1f1;
-}
-
-/* End CSS Navbar */
-
-/* Start CSS Tentang Kami */
-
-.tentang-ecoprint {
-  padding-top: 80px;
-  padding-bottom: 75px;
-}
-
-.img-tentangkami {
-  background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0) 40.13%,
-      rgba(255, 255, 255, 0.89) 86%,
-      #fff 99.82%
-    ),
-    url("../img/Batik-Ecoprint 1.png");
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  color: white;
-  padding: 20px;
-  border-radius: 20px;
-}
-
-.garis {
-  width: 10%;
-  height: 4px;
-  background-color: #5f8136;
-  border-radius: 10px;
-}
-
-.tentang-ecoprint-tagline h3 {
-  padding-left: 20px;
-  color: #698f3c;
-  font-size: 19px;
-  line-height: 30px;
-}
-
-.tentang-ecoprint-tagline h4 {
-  color: #887709;
-  font-weight: 600;
-  font-size: 23px;
-  line-height: 32px;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
-}
-.tentang-ecoprint-tagline p {
-  text-align: justify;
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
 /* End CSS Tentang Kami */
 
 /* Start CSS Manfaat Ecoprint */
-
 .text-title {
   color: #698f3c;
   font-size: 40px;
@@ -192,10 +142,6 @@ body {
   margin: 0 auto;
 }
 
-.desc-ecoprint {
-  color: #797061;
-  font-size: 15px;
-}
 .desc-lkp-ecoprint {
   color: #797061;
   font-size: 16px;
@@ -291,56 +237,6 @@ body {
   margin: 0 auto;
 }
 /* End CSS Galeri Produk */
-.manfaat-eco {
-  line-height: 20px;
-  background-color: #f0f4ec;
-  padding: 40px 60px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-  border-radius: 10px;
-}
-
-.manfaat-eco .manfaat-title {
-  font-size: 24px;
-  font-weight: 600;
-  color: #4f6b2d;
-  line-height: 40px;
-}
-
-.manfaat-eco .manfaat-text {
-  color: #b6a891;
-  font-size: 16px;
-  text-align: justify;
-  line-height: 24px;
-}
-/* End CSS Manfaat Ecoprint */
-
-/* teknik ecoprint */
-
-.teknik-ecoprint {
-  padding: 0;
-}
-
-.vl {
-  border-left: 8px solid #547230;
-  height: 80px;
-  border-radius: 10px;
-  margin-right: 90px;
-}
-
-.img-teknik {
-  width: 300px;
-}
-.teknik {
-  color: #4f6b2d;
-}
-
-.teknik h4 {
-  font-weight: bold;
-}
-
-.teknik-title {
-  color: #b6a891;
-}
 
 /* Start CSS Footer */
 footer {
@@ -363,7 +259,7 @@ footer {
   font-size: 14px;
   text-decoration: none;
   line-height: 20px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 .informasi a:hover {
@@ -400,3 +296,367 @@ footer {
   line-height: 80px;
 }
 /* End CSS Footer */
+
+/*================== STYLING PAGE EDUKASI 1 ==================*/
+/* Start CSS Tentang Kami */
+.tentang-ecoprint {
+  padding-top: 80px;
+  padding-bottom: 75px;
+}
+
+.img-tentangkami {
+  background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 40.13%,
+      rgba(255, 255, 255, 0.89) 86%,
+      #fff 99.82%
+    ),
+    url("../img/Batik-Ecoprint 1.png");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  color: white;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.garis {
+  width: 10%;
+  height: 4px;
+  background-color: #5f8136;
+  border-radius: 10px;
+}
+
+.tentang-ecoprint-tagline h3 {
+  padding-left: 20px;
+  color: #698f3c;
+  font-size: 19px;
+  line-height: 30px;
+}
+
+.tentang-ecoprint-tagline h4 {
+  color: #887709;
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 32px;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.tentang-ecoprint-tagline p {
+  text-align: justify;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+/* End CSS Tentang Kami */
+
+/* Start CSS Manfaat Ecoprint */
+.manfaat-eco {
+  line-height: 20px;
+  background-color: #f0f4ec;
+  padding: 40px 60px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+  border-radius: 10px;
+}
+
+.manfaat-eco .manfaat-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #4f6b2d;
+  line-height: 40px;
+}
+
+.manfaat-eco .manfaat-text {
+  color: #b6a891;
+  font-size: 16px;
+  text-align: justify;
+  line-height: 24px;
+}
+/* End CSS Manfaat Ecoprint */
+
+/*================== END STYLING PAGE EDUKASI 1 ==================*/
+
+/*================== STYLING PAGE EDUKASI 2 ==================*/
+/* teknik ecoprint */
+.teknik-ecoprint {
+  padding: 0;
+}
+
+.vl {
+  border-left: 8px solid #547230;
+  height: 80px;
+  border-radius: 10px;
+  margin-right: 90px;
+}
+
+.img-teknik {
+  width: 300px;
+}
+.teknik {
+  color: #4f6b2d;
+}
+
+.teknik h4 {
+  font-weight: bold;
+}
+
+.teknik-title {
+  color: #b6a891;
+}
+/* End teknik ecoprint */
+/*================== END STYLING PAGE EDUKASI 2 ==================*/
+
+/*================== STYLING PAGE BELANJA ==================*/
+
+.search-form {
+  margin-top: 75px;
+  background-color: #d1dcc3;
+  padding: 15px;
+  border-top: 1px solid #9b9b9b;
+}
+
+.select-kategori {
+  background-color: #e9eee2;
+  font-size: 14px;
+  color: #547230;
+  font-weight: 500;
+}
+
+.bg-katagori-wrapper {
+  background: linear-gradient(
+    180deg,
+    #eff3d6 0%,
+    rgba(244, 244, 244, 0.65) 30.23%,
+    rgba(224, 224, 224, 0) 100%
+  );
+  margin-top: 120px;
+}
+.kategori-wrapper {
+  background-color: #3f5624;
+  padding: 16px 95px;
+  border-radius: 30px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.kategori-wrapper h5 {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+}
+
+.title-belanja {
+  margin-top: 150px;
+  color: #698f3c;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Produk Populer */
+/* #more {
+  display: none;
+} */
+
+.card-produk {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+}
+
+.card-body-produk {
+  padding: 0px 10px;
+}
+
+.card-body-produk span {
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.card-body-produk h5 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #253215;
+}
+
+.card-body-produk .sub-text-produk {
+  font-size: 13px;
+  font-weight: 400;
+  margin: 0;
+  padding-bottom: 6px;
+}
+
+.card-body-produk p {
+  color: #253215;
+  font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+}
+
+.card-body-produk .teks-terjual {
+  color: #698f3c;
+  font-size: 12px;
+  letter-spacing: 1px;
+  font-weight: 400;
+}
+
+.btn-add-product {
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #698f3c;
+  border: none;
+  color: #fff;
+  font-weight: 700;
+}
+/* End Produk Populer */
+
+/* Terlaris */
+.card-title-carousel {
+  font-size: 18px;
+  color: #547230;
+  font-weight: 700;
+  width: 80%;
+  text-align: center;
+  line-height: 26px;
+}
+
+.card-terlaris {
+  height: auto;
+}
+/* End Terlaris */
+
+/* Support US */
+.support-us {
+  background-color: #d1dcc3;
+  padding: 32px 70px;
+  border-radius: 25px;
+  box-shadow: rgba(0, 0, 0, 0.41) 0px 1px 2px;
+}
+
+.support-us h5 {
+  color: #547230;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: 1px;
+  width: 95%;
+}
+
+.support-us p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #547230;
+  letter-spacing: 1px;
+}
+/* End Support US */
+
+/* Layanan */
+.card-layanan {
+  background-color: #f0f4ec;
+  padding: 8px 4px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.193) 0px 1px 1px;
+}
+
+.card-layanan p {
+  color: #3f5624;
+  font-size: 11px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+/* End Layanan */
+/*================== END STYLING PAGE BELANJA ==================*/
+
+/*==================  STYLING PAGE BELANJA KATEGORI ==================*/
+.card-kategori {
+  background-color: #f0f4ec;
+  padding: 32px;
+  border-radius: 15px;
+}
+
+.card-kategori .title-kategori {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.card-kategori a {
+  text-decoration: none;
+}
+
+.card-kategori img {
+  width: 15%;
+  height: 15%;
+}
+
+.card-sub-kategori {
+  border-bottom: 2px solid #698f3c;
+  padding: 8px;
+}
+
+.card-sub-kategori:hover {
+  background-color: #d1dcc3;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card-sub-kategori.active {
+  background-color: #d1dcc3;
+  border-radius: 10px;
+}
+
+.text-title-kategori {
+  margin-left: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3f5624;
+}
+.text-small-kategori {
+  color: #3f5624;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+.card-kategori .price-range {
+  margin: 0;
+  font-size: 12px;
+}
+
+.custom-range::-webkit-slider-runnable-track {
+  background-color: #3f5624; /* Garis track berwarna hitam */
+}
+.custom-range::-webkit-slider-thumb {
+  background-color: #d1dcc3; /* Lingkaran slider berwarna hitam */
+  border: 2px solid rgba(0, 0, 0, 0.555);
+}
+
+.card-produk-kategori {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 3px 2px -2px,
+    rgba(0, 0, 0, 0.3) 0px 2px 1px -4px;
+  background-color: #f0f4ec;
+  border-radius: 15px;
+  display: none;
+}
+
+#paginationContainer {
+  margin-top: 10px;
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+.pagination li {
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 15px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: blue; */
+}
+
+.pagination .active {
+  color: #fff;
+  font-weight: bold;
+  background-color: #3f5624;
+}
+
+/*================== END STYLING PAGE BELANJA KATEGORI ==================*/
