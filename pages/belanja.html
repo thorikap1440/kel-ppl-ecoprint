@@ -89,8 +89,8 @@
           </ul>
 
           <div>
-            <button class="button-masuk mx-2 px-4 py-2">MASUK</button>
-            <button class="button-daftar px-4 py-2">DAFTAR</button>
+            <button class="button-masuk mx-2 px-4 py-2" onclick="window.location.href='../components/logout.php'">LOGOUT</button>
+            <!-- <button class="button-daftar px-4 py-2">DAFTAR</button> -->
           </div>
         </div>
       </div>
@@ -260,300 +260,69 @@
             </div>
           </div>
 
-          <h3 class="title-belanja">Produk Populer</h3>
-          <div class="row g-3 row-cols-lg-5 row-cols-md-3 row-cols-1 mt-2">
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-1.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Tas</span>
-                  <h5>Kaliko Pouch</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.7)</span>
-                  <p class="pt-2 sub-text-produk">Kaliko textiles</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p class="fw-bold m-1">Rp.80.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
+          <section class="products"></section>
+            <h3 class="title-belanja">Produk Populer</h3>
+            <div class="row g-3 row-cols-lg-5 row-cols-md-3 row-cols-1 mt-2">
+              <?php 
+                  include '../components/db.php';
+                  $select_products = $conn->prepare("SELECT * FROM `produk`");
+                  $select_products->execute();
+                  $result = $select_products->get_result();
+                  
+                  if ($result->num_rows > 0) {
+                    while ($fetch_product = $result->fetch_assoc()) {
+                ?>
+                      <div class="col">
+                        <div class="card card-produk p-2 border-0">
+                          <img src="../uploaded_files/<?= $fetch_product['image']; ?>" class="card-img-top" alt="<?= $fetch_product['name']; ?>" />
+                          <div class="card-body-produk p-2">
+                            <p class="pt-2 sub-text-produk"><?= $fetch_product['category']; ?></p>
+                            <h5><?= $fetch_product['name']; ?></h5>
+                            <!-- Penilaian produk -->
+                            <!-- Di sini saya tetapkan rating secara statis dengan nilai 4.7 -->
+                            <div class="rating">
+                              <?php
+                                $rating = 4.7;
+                                $full_stars = (int) $rating;
+                                $half_star = $rating - $full_stars >= 0.5 ? true : false;
+                                
+                                for ($i = 0; $i < $full_stars; $i++) {
+                                  echo '<i class="bi bi-star-fill"></i>';
+                                }
+                                
+                                if ($half_star) {
+                                  echo '<i class="bi bi-star-half"></i>';
+                                  $empty_stars = 5 - $full_stars - 1;
+                                } else {
+                                  $empty_stars = 5 - $full_stars;
+                                }
+                                
+                                for ($i = 0; $i < $empty_stars; $i++) {
+                                  echo '<i class="bi bi-star"></i>';
+                                }
+                              ?>
+                              <span>(<?= $rating; ?>)</span>
+                            </div>
+                            <p class="pt-2 sub-text-produk"><?= $fetch_product['description']; ?></p>
+                            <div class="d-flex align-items-center justify-content-between">
+                              <p class="fw-bold m-1">Rp.<?= $fetch_product['price']; ?></p>
+                              <button class="btn-add-product" type="button">
+                                <i class="bi bi-cart-dash"></i>
+                                Tambah
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                <?php
+                    }
+                  } else {
+                    echo '<p class="empty">Tidak ada produk ditemukan!</p>';
+                  }
+                ?>
               </div>
-            </div>
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-2.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Alas Kaki</span>
-                  <h5>Eco Flat Sandals</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.6)</span>
-                  <p class="pt-2 sub-text-produk">Footprint shop</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p class="fw-bold m-1">Rp.150.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-3.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Lainnya</span>
-                  <h5>Floral Scraft</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.9)</span>
-                  <p class="pt-2 sub-text-produk">Nature shop</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p class="fw-bold m-1">Rp.180.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-4.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Wanita</span>
-                  <h5>Sleeveless Blouse</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.7)</span>
-                  <p class="pt-2 sub-text-produk">Keyla wear</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p class="fw-bold m-1">Rp.170.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-5.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Alas Kaki</span>
-                  <h5>Kaos Kaki Floral</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.6)</span>
-                  <p class="pt-2 sub-text-produk">Footprint shop</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p class="fw-bold m-1">Rp.30.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-6.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Alas Kaki</span>
-                  <h5>Eco Leather Sandals</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.8)</span>
-                  <p class="pt-2 sub-text-produk">Footprint Shop</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p class="fw-bold m-1">Rp.250.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-7.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Tas</span>
-                  <h5>Woody Multibag</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.8)</span>
-                  <p class="pt-2 sub-text-produk">Eco Store</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p class="fw-bold m-1">Rp.170.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-8.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Lainnya</span>
-                  <h5>Diamond Eco Scraft</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.9)</span>
-                  <p class="pt-2 sub-text-produk">Cultural Idn</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p class="fw-bold m-1">Rp.190.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-9.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Wanita</span>
-                  <h5>Top Blazer Ecoprint</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.9)</span>
-                  <p class="pt-2 sub-text-produk">Cultural Idn</p>
-                  <div
-                    class="d-flex align-items-center justify-content-between"
-                  >
-                    <p class="fw-bold m-1">Rp.300.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card card-produk p-2 border-0">
-                <img
-                  src="../Assets/img/img-belanja/produk-populer/img-10.png"
-                  class="card-img-top"
-                  alt="img-1"
-                />
-                <div class="card-body-produk p-2">
-                  <span>Pria</span>
-                  <h5>Celana Santai Ecoprint</h5>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <i class="bi bi-star-fill"></i>
-                  <span>(4.7)</span>
-                  <p class="pt-2 sub-text-produk">Keyla wear</p>
-                  <div class="d-flex justify-content-between">
-                    <p class="fw-bold m-1">Rp.200.000</p>
-                    <button class="btn-add-product" type="button">
-                      <i class="bi bi-cart-dash"></i>
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+            </section>
+            
 
     <section>
       <div id="myCarousel" class="carousel slide mt-5" data-bs-ride="carousel">

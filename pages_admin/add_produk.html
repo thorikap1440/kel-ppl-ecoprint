@@ -1,0 +1,207 @@
+<?php
+
+include '../components/db.php';
+
+  session_start();
+  if($_SESSION['status_login'] != true){
+      echo '<script>window.location="components/login.php"</script>';
+    }
+
+if(isset($_COOKIE['user_id'])){
+   $user_id = $_COOKIE['user_id'];
+}else{
+   setcookie('user_id', create_unique_id(), time() + 60*60*24*30);
+}
+
+if(isset($_POST['add'])){
+  
+   $id = create_unique_id();
+   $category = $_POST['category'];
+   $category = filter_var($category, FILTER_SANITIZE_STRING);
+  
+   $name = $_POST['name'];
+   $name = filter_var($name, FILTER_SANITIZE_STRING);
+
+   $description = $_POST['description'];
+   $description = filter_var($description, FILTER_SANITIZE_STRING);
+
+   $price = $_POST['price'];
+   $price = filter_var($price, FILTER_SANITIZE_STRING);
+
+   $image = $_FILES['image']['name'];
+   $ext = pathinfo($image, PATHINFO_EXTENSION);
+   $rename = create_unique_id().'.'.$ext;
+   $image_tmp_name = $_FILES['image']['tmp_name'];
+   $image_size = $_FILES['image']['size'];
+   $image_folder = '../uploaded_files/'.$rename;
+
+   if($image_size > 2000000){
+      $warning_msg[] = 'Image size is too large!';
+   }else{
+      $add_product = $conn->prepare("INSERT INTO `produk`(id, category, name, description, price, image) VALUES(?,?,?,?,?,?)");
+      $add_product->execute([$id, $category, $name, $description, $price, $rename]);
+      move_uploaded_file($image_tmp_name, $image_folder);
+      $success_msg[] = 'Product added!';
+   }
+
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Website Ecoprint</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../Assets/css/style.css" />
+    <link rel="stylesheet" href="../Assets/css/admin.css" />
+    <link rel="stylesheet" href="../Assets/css/responsive.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Viga&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar nav-color navbar-expand-lg fixed-top py-3 shadow-sm">
+      <div class="container-lg">
+        <a class="navbar-brand" href="#">
+          <img
+            src="Assets/img/Logo Icon.png"
+            alt=""
+            width="30"
+            class="me-2"
+          />LOGO ECOPRINT</a
+        >
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="bi bi-text-paragraph text-black"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item mx-3">
+                <a
+                  class="nav-link"
+                  href="../pages_admin/add_produk.html"
+                  >Tambah Produk</a
+                >
+              </li>
+            <li class="nav-item mx-3">
+              <a
+                class="nav-link"
+                href="../pages_admin/view_produk.html"
+                >Lihat Produk</a
+              >
+            </li>
+            <li class="nav-item mx-3">
+              <a
+                class="nav-link"
+                href="#"
+                >Pesanan</a
+              >
+            </li>
+          </ul>
+
+          <div class="btn-navbar">
+            <button class="button-masuk mx-2 px-4 py-2" onclick="window.location.href='../components/logout.php'">LOGOUT</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <div class="container mt-5">
+      <div class="box-add">
+        <section id="product-form">
+          <form action="" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="category" class="form-label">Kategori Produk</label>
+              <select class="form-select custom-select" name="category" aria-label="Default select example">
+                <option selected>Pilih Kategori</option>
+                <option value="Wanita">Wanita</option>
+                <option value="Pria">Pria</option>
+                <option value="Baju">Baju</option>
+                <option value="Tas">Tas</option>
+                <option value="Alas Kaki">Alas Kaki</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="product" class="form-label">Nama Produk</label>
+              <input type="text" name="name" placeholder="Masukan Nama Produk" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Deskripsi Produk</label>
+              <input type="text" name="description" placeholder="Masukan Deskripsi Produk" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Harga Produk</label>
+              <input type="number" name="price" placeholder="Masukan Harga Produk" required min="0" max="9999999999" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="formFile" class="form-label">Foto Produk</label>
+              <input class="form-control" type="file" name='image' id="formFile">
+            </div>
+  
+            <button type="submit" class="btn btn-primary" name="add">Tambah</button>
+          </form>
+        </section>
+      </div>
+    </div>
+  
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+<script src="../js/script.js"></script>
+
+<?php include '../components/alert.php'; ?>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container-lg">
+        <div
+          class="row p-5 mt-5"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+      <div class="col-lg-12 copyright">
+        <p>
+          Copyright &copy; 2023 Kelompok PPL Ecoprint ITTP | All Right Reserved
+        </p>
+      </div>
+    </footer>
+    <!-- Akhir Footer -->
+
+    <script src="/Assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+
+  </body>
+</html>

@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  if($_SESSION['status_login'] != true){
+      echo '<script>window.location="components/logout.php"</script>';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +17,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/Assets/css/style.css" />
+    <link rel="stylesheet" href="Assets/css/style.css" />
     <link rel="stylesheet" href="Assets/css/responsive.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link
@@ -81,15 +88,15 @@
               <a
                 class="nav-link"
                 onclick="setActive('pages/belanja')"
-                href="/pages/belanja.html"
+                href="pages/belanja.html"
                 >Berbelanja</a
               >
             </li>
           </ul>
 
           <div class="btn-navbar">
-            <button class="button-masuk mx-2 px-4 py-2">MASUK</button>
-            <button class="button-daftar px-4 py-2">DAFTAR</button>
+            <button class="button-masuk mx-2 px-4 py-2" onclick="window.location.href='components/logout.php'">LOGOUT</button>
+            <!-- <button class="button-daftar px-4 py-2">DAFTAR</button> -->
           </div>
         </div>
       </div>
@@ -862,5 +869,7 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+
+
   </body>
 </html>

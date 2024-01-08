@@ -1,0 +1,175 @@
+/*================== START STYLING PAGE TAMBAH PRODUK ==================*/
+/* CSS untuk mengatur lebar form input */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form-label {
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-control,
+  .form-select {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fdfdfd;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
+
+  /* Styles for select and its options when focused */
+  .form-select:focus,
+  .form-control:focus {
+    border-color: #2f401b7e;
+    outline: 0;
+    box-shadow: 0 0 0 0.20rem #2f401b2f;
+  }
+
+  /* Gaya ketika opsi dipilih */
+.form-select option:checked {
+    background-color: #2f401b8f;
+    color: #fff;
+  }
+  .custom-select option:hover {
+    background-color: #00ff95 !important;
+    color: #fff !important;
+}
+  
+  .btn-primary {
+    width: 100%;
+    margin-top: 20px;
+    padding: 0.475rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    background-color: #2F401B;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #698F3C;
+    color: #fff;
+  }
+  
+  
+
+
+/*================== END STYLING PAGE TAMBAH PRODUK ==================*/
+
+/*================== START STYLING PAGE LIHAT PRODUK ==================*/
+
+.products {
+    padding: 20px;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+/* CSS untuk judul heading */
+.heading {
+    padding-top: 80px;
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* CSS untuk container box produk */
+.box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* CSS untuk setiap box produk */
+.box {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: left;
+}
+
+/* CSS untuk gambar produk */
+.image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* CSS untuk nama produk */
+.name {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+
+/* CSS untuk tombol buy now */
+.delete-btn {
+    display: inline-block;
+    padding: 8px 15px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .btn-update,
+  .btn-delete {
+    padding: 8px 15px;
+    border: none;
+    margin-right: 6px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-update {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .btn-delete {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .btn-update:hover,
+  .btn-delete:hover {
+    opacity: 0.8;
+  }
+  
+  .card.card-produk {
+    margin-bottom: 20px;
+  }
+  
+  .card-body-produk {
+    text-align: left;
+  }
+  
+  .card-body-produk h5,
+  .card-body-produk p,
+  .card-body-produk .rating,
+  .card-body-produk .d-flex {
+    margin-bottom: 10px;
+  }
+  
