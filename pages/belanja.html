@@ -21,18 +21,20 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
     />
+    <style>
+    </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar nav-color navbar-expand-lg fixed-top py-3 shadow-sm">
       <div class="container-lg">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="../index.html">
           <img
-            src="Assets/img/Logo Icon.png"
-            alt=""
-            width="30"
-            class="me-2"
-          />LOGO ECOPRINT</a
+            src="../Assets/img/logo-ecoprint.png"
+            alt="logo-ecoprint"
+            width="80"
+            height="33"
+          /></a
         >
 
         <button
@@ -88,10 +90,24 @@
             </li>
           </ul>
 
+            <div class="avatar-dropdown">
+                <img
+                  src="../Assets/img/user.png"
+                  width="30%"
+                  alt="User Avatar"
+                  class="avatar"
+                  onclick="toggleDropdown()"
+                />
+              <div class="dropdown-content" id="avatarDropdown">
+                <a href="#">Edit Profile</a>
+                <a onclick="window.location.href='../components/logout.php'">Logout</a>
+              </div>
+            </div>
+<!-- 
           <div>
-            <button class="button-masuk mx-2 px-4 py-2" onclick="window.location.href='../components/logout.php'">LOGOUT</button>
+            <button class="button-masuk mx-2 px-4 py-2" onclick="window.location.href='../components/logout.php'">LOGOUT</button> -->
             <!-- <button class="button-daftar px-4 py-2">DAFTAR</button> -->
-          </div>
+          <!-- </div> -->
         </div>
       </div>
     </nav>
@@ -203,11 +219,13 @@
             >
               <div class="col-md-2">
                 <div class="text-center">
-                  <img
-                    src="../Assets/img/img-belanja/kategori/wanita.png"
-                    alt=""
-                  />
-                  <h5 class="text-white mt-4">Wanita</h5>
+                  <a href="../pages/kategori/wanita.html" style="text-decoration: none;">
+                    <img
+                      src="../Assets/img/img-belanja/kategori/wanita.png"
+                      alt=""
+                    />
+                    <h5 class="text-white mt-4">Wanita</h5>
+                  </a>
                 </div>
               </div>
               <div class="col-md-2">
@@ -273,46 +291,48 @@
                     while ($fetch_product = $result->fetch_assoc()) {
                 ?>
                       <div class="col">
-                        <div class="card card-produk p-2 border-0">
-                          <img src="../uploaded_files/<?= $fetch_product['image']; ?>" class="card-img-top" alt="<?= $fetch_product['name']; ?>" />
-                          <div class="card-body-produk p-2">
-                            <p class="pt-2 sub-text-produk"><?= $fetch_product['category']; ?></p>
-                            <h5><?= $fetch_product['name']; ?></h5>
-                            <!-- Penilaian produk -->
-                            <!-- Di sini saya tetapkan rating secara statis dengan nilai 4.7 -->
-                            <div class="rating">
-                              <?php
-                                $rating = 4.7;
-                                $full_stars = (int) $rating;
-                                $half_star = $rating - $full_stars >= 0.5 ? true : false;
-                                
-                                for ($i = 0; $i < $full_stars; $i++) {
-                                  echo '<i class="bi bi-star-fill"></i>';
-                                }
-                                
-                                if ($half_star) {
-                                  echo '<i class="bi bi-star-half"></i>';
-                                  $empty_stars = 5 - $full_stars - 1;
-                                } else {
-                                  $empty_stars = 5 - $full_stars;
-                                }
-                                
-                                for ($i = 0; $i < $empty_stars; $i++) {
-                                  echo '<i class="bi bi-star"></i>';
-                                }
-                              ?>
-                              <span>(<?= $rating; ?>)</span>
-                            </div>
-                            <p class="pt-2 sub-text-produk"><?= $fetch_product['description']; ?></p>
-                            <div class="d-flex align-items-center justify-content-between">
-                              <p class="fw-bold m-1">Rp.<?= $fetch_product['price']; ?></p>
-                              <button class="btn-add-product" type="button">
-                                <i class="bi bi-cart-dash"></i>
-                                Tambah
-                              </button>
+                        <a href="detail_produk.html" style="text-decoration: none;">
+                          <div class="card card-produk p-2 border-0">
+                            <img src="../uploaded_files/<?= $fetch_product['image']; ?>" class="card-img-top" alt="<?= $fetch_product['name']; ?>" />
+                            <div class="card-body-produk p-2">
+                              <p class="pt-2 sub-text-produk"><?= $fetch_product['category']; ?></p>
+                              <h5><?= $fetch_product['name']; ?></h5>
+                              <!-- Penilaian produk -->
+                              <!-- Di sini saya tetapkan rating secara statis dengan nilai 4.7 -->
+                              <div class="rating">
+                                <?php
+                                  $rating = 4.7;
+                                  $full_stars = (int) $rating;
+                                  $half_star = $rating - $full_stars >= 0.5 ? true : false;
+                                  
+                                  for ($i = 0; $i < $full_stars; $i++) {
+                                    echo '<i class="bi bi-star-fill"></i>';
+                                  }
+                                  
+                                  if ($half_star) {
+                                    echo '<i class="bi bi-star-half"></i>';
+                                    $empty_stars = 5 - $full_stars - 1;
+                                  } else {
+                                    $empty_stars = 5 - $full_stars;
+                                  }
+                                  
+                                  for ($i = 0; $i < $empty_stars; $i++) {
+                                    echo '<i class="bi bi-star"></i>';
+                                  }
+                                ?>
+                                <span>(<?= $rating; ?>)</span>
+                              </div>
+                              <p class="pt-2 sub-text-produk"><?= $fetch_product['description']; ?></p>
+                              <div class="d-flex align-items-center justify-content-between">
+                                <p class="fw-bold m-1">Rp.<?= $fetch_product['price']; ?></p>
+                                <button class="btn-add-product" type="button">
+                                  <i class="bi bi-cart-dash"></i>
+                                  Tambah
+                                </button>
+                              </div>
                             </div>
                           </div>
-                        </div>
+                        </a>
                       </div>
                 <?php
                     }
@@ -682,24 +702,24 @@
           data-aos-delay="200"
         >
           <div class="col-lg-3 col-md-6">
-            <img src="../Assets/img/Image.png" alt="" />
+            <img src="../Assets/img/logo-ecoprint.png" alt="" />
           </div>
           <div class="col-lg-3 col-md-6 informasi">
             <h5 class="title-footer">Informasi</h5>
             <li class="mb-2">
-              <a href="#hero">Beranda</a>
+              <a href="../index.html">Beranda</a>
             </li>
             <li class="mb-2">
-              <a href="#edukasi">Edukasi</a>
+              <a href="edukasi1.html">Edukasi</a>
             </li>
             <li class="mb-2">
-              <a href="#manfaat-ecoprint">Manfaat</a>
+              <a href="edukasi1.html">Manfaat</a>
             </li>
             <li class="mb-2">
-              <a href="#teknik-ecoprint">Teknik</a>
+              <a href="edukasi2.html">Teknik</a>
             </li>
             <li class="mb-2">
-              <a href="#berbelanja">Berbelanja</a>
+              <a href="belanja.html">Berbelanja</a>
             </li>
           </div>
 

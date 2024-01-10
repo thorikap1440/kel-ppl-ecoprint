@@ -26,14 +26,13 @@
     <!-- Navbar -->
     <nav class="navbar nav-color navbar-expand-lg fixed-top py-3 shadow-sm">
       <div class="container-lg">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="../index.html">
           <img
-            src="Assets/img/Logo Icon.png"
-            alt=""
-            width="30"
-            class="me-2"
-          />LOGO ECOPRINT</a
-        >
+            src="../Assets/img/logo-ecoprint.png"
+            alt="logo-ecoprint"
+            width="80"
+            height="33"
+        /></a>
 
         <button
           class="navbar-toggler border-0"
@@ -81,9 +80,20 @@
             </li>
           </ul>
 
-          <div>
-            <button class="button-masuk mx-2 px-4 py-2" onclick="window.location.href='../components/logout.php'">LOGOUT</button>
-            <!-- <button class="button-daftar px-4 py-2">DAFTAR</button> -->
+          <div class="avatar-dropdown">
+            <img
+              src="../Assets/img/user.png"
+              width="30%"
+              alt="User Avatar"
+              class="avatar"
+              onclick="toggleDropdown()"
+            />
+            <div class="dropdown-content" id="avatarDropdown">
+              <a href="#">Edit Profile</a>
+              <a onclick="window.location.href='../components/logout.php'"
+                >Logout</a
+              >
+            </div>
           </div>
         </div>
       </div>
@@ -386,24 +396,24 @@
           data-aos-delay="200"
         >
           <div class="col-lg-3 col-md-6">
-            <img src="../Assets/img/Image.png" alt="" />
+            <img src="../Assets/img/logo-ecoprint.png" alt="" />
           </div>
           <div class="col-lg-3 col-md-6 informasi">
             <h5 class="title-footer">Informasi</h5>
             <li class="mb-2">
-              <a href="#hero">Beranda</a>
+              <a href="../index.html">Beranda</a>
             </li>
             <li class="mb-2">
-              <a href="#edukasi">Edukasi</a>
+              <a href="edukasi1.html">Edukasi</a>
             </li>
             <li class="mb-2">
-              <a href="#manfaat-ecoprint">Manfaat</a>
+              <a href="edukasi1.html">Manfaat</a>
             </li>
             <li class="mb-2">
-              <a href="#teknik-ecoprint">Teknik</a>
+              <a href="edukasi2.html">Teknik</a>
             </li>
             <li class="mb-2">
-              <a href="#berbelanja">Berbelanja</a>
+              <a href="belanja.html">Berbelanja</a>
             </li>
           </div>
 

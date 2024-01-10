@@ -76,13 +76,13 @@ if(isset($_POST['add'])){
     <!-- Navbar -->
     <nav class="navbar nav-color navbar-expand-lg fixed-top py-3 shadow-sm">
       <div class="container-lg">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="../index.html">
           <img
-            src="Assets/img/Logo Icon.png"
-            alt=""
-            width="30"
-            class="me-2"
-          />LOGO ECOPRINT</a
+          src="../Assets/img/logo-ecoprint.png"
+          alt="logo-ecoprint"
+          width="80"
+          height="33"
+          /></a
         >
 
         <button
@@ -121,9 +121,19 @@ if(isset($_POST['add'])){
             </li>
           </ul>
 
-          <div class="btn-navbar">
-            <button class="button-masuk mx-2 px-4 py-2" onclick="window.location.href='../components/logout.php'">LOGOUT</button>
+          <div class="avatar-dropdown">
+            <img
+              src="../Assets/img/user.png"
+              width="30%"
+              alt="User Avatar"
+              class="avatar"
+              onclick="toggleDropdown()"
+            />
+          <div class="dropdown-content" id="avatarDropdown">
+            <a href="#">Edit Profile</a>
+            <a onclick="window.location.href='../components/logout.php'">Logout</a>
           </div>
+        </div>
         </div>
       </div>
     </nav>
@@ -191,7 +201,7 @@ if(isset($_POST['add'])){
     </footer>
     <!-- Akhir Footer -->
 
-    <script src="/Assets/js/script.js"></script>
+    <script src="../Assets/js/script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();

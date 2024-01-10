@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detail Produk</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../Assets/css/style.css" />
+    <link rel="stylesheet" href="../Assets/css/responsive.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=Viga&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar nav-color navbar-expand-lg fixed-top py-3 shadow-sm">
+      <div class="container-lg">
+        <a class="navbar-brand" href="../index.html">
+          <img
+            src="../Assets/img/logo-ecoprint.png"
+            alt="logo-ecoprint"
+            width="80"
+            height="33"
+          /></a
+        >
+
+        <button
+          class="navbar-toggler border-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="bi bi-text-paragraph text-black"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item mx-3">
+              <a
+                class="nav-link"
+                onclick="setActive('../index')"
+                href="../index.html"
+                aria-current="page"
+                >Beranda</a
+              >
+            </li>
+            <li class="nav-item mx-3">
+              <div class="dropdown">
+                <button
+                  class="nav-link dropdown-toggle"
+                  type="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Edukasi
+                </button>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="./edukasi1.html"
+                      >Tentang Ecoprint & Manfaat</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="./edukasi2.html"
+                      >Teknik Ecoprint</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link" onclick="setActive('belanja')" href="belanja.html"
+                >Berbelanja</a
+              >
+            </li>
+          </ul>
+
+          <div class="avatar-dropdown">
+            <img
+              src="../Assets/img/user.png"
+              width="30%"
+              alt="User Avatar"
+              class="avatar"
+              onclick="toggleDropdown()"
+            />
+          <div class="dropdown-content" id="avatarDropdown">
+            <a href="#">Edit Profile</a>
+            <a onclick="window.location.href='../components/logout.php'">Logout</a>
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+    </nav>
+    <!-- Akhir Navbar -->
+
+    <section>
+      <div class="search-form">
+        <div class="container-lg">
+          <div class="row d-flex justify-content-between align-items-center">
+            <div class="col-lg-3">
+              <div class="input-group flex-nowrap">
+                <span
+                  class="input-group-text border-0"
+                  style="background-color: #E9EEE2;"
+                  id="addon-wrapping"
+                  ><img
+                    src="../Assets/img/img-belanja/grommet.png"
+                    alt=""
+                    style=" width: 26px; height: 27px;"
+                /></span>
+                <input
+                  type="text"
+                  class="form-control select-kategori"
+                  placeholder="Telusuri semua kategori"
+                  aria-label="Kategori"
+                  aria-describedby="addon-wrapping"
+                  style="background-color: #E9EEE2;"
+                />
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control select-kategori p-2 w-25 px-4"
+                  placeholder="Cari..."
+                  aria-label="Username"
+                  aria-describedby="basic-addon1"
+                  style="background-color: #E9EEE2;"
+                />
+                <select
+                  class="form-select select-kategori"
+                  id="pageSelect"
+                  onchange="changePage()"
+                  aria-label="Default select example"
+                >
+                  <option selected>Semua Kategori</option>
+                  <option value="../pages/kategori/wanita">Wanita</option>
+                  <option value="2">Pria</option>
+                  <option value="3">Baju</option>
+                  <option value="4">Tas</option>
+                  <option value="5">Alas Kaki</option>
+                  <option value="6">Lainnya</option>
+                </select>
+                <button
+                  class="btn border-0"
+                  style="background-color: #698F3C; border-radius: 0px 8px 8px 0px;"
+                >
+                  <i class="bi bi-search text-white"></i>
+                </button>
+
+                <button class="ms-5 border-0 bg-transparent">
+                  <img
+                    src="../Assets/img/img-belanja/icon-keranjang.png"
+                    alt=""
+                    width="40px"
+                    height="37px"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+        <div class="detail-produk">
+            <div class="container-lg">
+                <h3 class="title-belanja mt-5">Detail Produk</h3>
+                <div class="row d-flex align-items-center justify-content-center mt-5">
+                    <div class="col-lg-4 col-md-5 mx-4">
+                        <img src="../Assets/img/detail.png" alt=""  class="card-img-top">
+                    </div>
+                    <div class="col-lg-5 col-md-6">
+                      <h5 class="fw-bold fs-3">Floral-print Dress</h5>
+                      <p>Cultural Idn</p>
+                      <p class="fw-bold fs-4">Rp.100.000</p>
+                      <p style="text-align: justify;">Floral-print Dress Ecoprint menggambarkan keindahan bunga dalam fashion yang ramah lingkungan. Dengan teknik pencetakan Ecoprint yang inovatif, dress ini menampilkan motif bunga yang menawan. Terbuat dari bahan ramah lingkungan, dress ini tidak hanya memberikan tampilan modis, tetapi juga mendukung keberlanjutan. Dengan potongan yang nyaman dan gaya yang anggun, Floral-print Dress Ecoprint menjadi pilihan sempurna untuk gaya yang berkelanjutan dan bermakna.</p>
+                      <button class="btn-add-product p-2 px-5" type="button">
+                        Tambah
+                      </button>
+                      <button class="btn-add-product p-2 px-5 mx-2" type="button">
+                        Beli Sekarang
+                      </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+      <div class="products">
+        <div class="container-lg position-relative">
+
+            <h3 class="title-belanja mt-5">Produk Lainnya</h3>
+            <div class="row g-3 row-cols-lg-5 row-cols-md-3 row-cols-1 mt-2">
+              <?php 
+                  include '../components/db.php';
+                  $select_products = $conn->prepare("SELECT * FROM `produk`");
+                  $select_products->execute();
+                  $result = $select_products->get_result();
+                  
+                  if ($result->num_rows > 0) {
+                    while ($fetch_product = $result->fetch_assoc()) {
+                ?>
+                      <div class="col">
+                        <a href="detail_produk.html" style="text-decoration: none;">
+                          <div class="card card-produk p-2 border-0">
+                            <img src="../uploaded_files/<?= $fetch_product['image']; ?>" class="card-img-top" alt="<?= $fetch_product['name']; ?>" />
+                            <div class="card-body-produk p-2">
+                              <p class="pt-2 sub-text-produk"><?= $fetch_product['category']; ?></p>
+                              <h5><?= $fetch_product['name']; ?></h5>
+                              <!-- Penilaian produk -->
+                              <!-- Di sini saya tetapkan rating secara statis dengan nilai 4.7 -->
+                              <div class="rating">
+                                <?php
+                                  $rating = 4.7;
+                                  $full_stars = (int) $rating;
+                                  $half_star = $rating - $full_stars >= 0.5 ? true : false;
+                                  
+                                  for ($i = 0; $i < $full_stars; $i++) {
+                                    echo '<i class="bi bi-star-fill"></i>';
+                                  }
+                                  
+                                  if ($half_star) {
+                                    echo '<i class="bi bi-star-half"></i>';
+                                    $empty_stars = 5 - $full_stars - 1;
+                                  } else {
+                                    $empty_stars = 5 - $full_stars;
+                                  }
+                                  
+                                  for ($i = 0; $i < $empty_stars; $i++) {
+                                    echo '<i class="bi bi-star"></i>';
+                                  }
+                                ?>
+                                <span>(<?= $rating; ?>)</span>
+                              </div>
+                              <p class="pt-2 sub-text-produk"><?= $fetch_product['description']; ?></p>
+                              <div class="d-flex align-items-center justify-content-between">
+                                <p class="fw-bold m-1">Rp.<?= $fetch_product['price']; ?></p>
+                                <button class="btn-add-product" type="button">
+                                  <i class="bi bi-cart-dash"></i>
+                                  Tambah
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                <?php
+                    }
+                  } else {
+                    echo '<p class="empty">Tidak ada produk ditemukan!</p>';
+                  }
+                ?>
+              </div>
+            </section>
+            
+
+    <!-- Footer -->
+    <footer>
+      <div class="container-lg">
+        <div
+          class="row p-5 mt-5"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+        >
+          <div class="col-lg-3 col-md-6">
+            <img src="../Assets/img/logo-ecoprint.png" alt="" />
+          </div>
+          <div class="col-lg-3 col-md-6 informasi">
+            <h5 class="title-footer">Informasi</h5>
+            <li class="mb-2">
+              <a href="../index.html">Beranda</a>
+            </li>
+            <li class="mb-2">
+              <a href="edukasi1.html">Edukasi</a>
+            </li>
+            <li class="mb-2">
+              <a href="edukasi1.html">Manfaat</a>
+            </li>
+            <li class="mb-2">
+              <a href="edukasi2.html">Teknik</a>
+            </li>
+            <li class="mb-2">
+              <a href="belanja.html">Berbelanja</a>
+            </li>
+          </div>
+
+          <div class="col-lg-3 col-md-6 kontak">
+            <h5 class="title-footer">Kontak</h5>
+            <div class="mb-3 d-flex align-items-center">
+              <img src="../Assets/img/icon/Alamat Icon.png" alt="" />
+              <a href="#"
+                >Jl. Pelajar Pejuang 123 Majalaya Purwokerto Indonesia</a
+              >
+            </div>
+
+            <div class="mb-3">
+              <img src="../Assets/img/icon/Whatsapp icon.png" alt="" />
+              <a href="#">0822-7891-5251</a>
+            </div>
+
+            <div class="mb-3">
+              <img src="../Assets/img/icon/Email Icon.png" alt="" />
+              <a href="#">ecoprintPPL@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6 social-media">
+            <h5 class="title-footer">Social Media</h5>
+            <a href="#">
+              <img src="../Assets/img/icon/facebook.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../Assets/img/icon/twt.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../Assets/img/icon/linkedin.png" alt="" />
+            </a>
+            <a href="#">
+              <img src="../Assets/img/icon/pinterest.png" alt="" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12 copyright">
+        <p>
+          Copyright &copy; 2023 Kelompok PPL Ecoprint ITTP | All Right Reserved
+        </p>
+      </div>
+    </footer>
+    <!-- Akhir Footer -->
+
+    <script src="../Assets/js/script.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -35,11 +35,11 @@
       <div class="container-lg">
         <a class="navbar-brand" href="#">
           <img
-            src="Assets/img/Logo Icon.png"
-            alt=""
-            width="30"
-            class="me-2"
-          />LOGO ECOPRINT</a
+            src="Assets/img/logo-ecoprint.png"
+            alt="logo-ecoprint"
+            width="80"
+            height="33"
+          /></a
         >
 
         <button
@@ -94,10 +94,20 @@
             </li>
           </ul>
 
-          <div class="btn-navbar">
-            <button class="button-masuk mx-2 px-4 py-2" onclick="window.location.href='components/logout.php'">LOGOUT</button>
-            <!-- <button class="button-daftar px-4 py-2">DAFTAR</button> -->
+          <div class="avatar-dropdown">
+            <img
+              src="Assets/img/user.png"
+              width="30%"
+              alt="User Avatar"
+              class="avatar"
+              onclick="toggleDropdown()"
+            />
+          <div class="dropdown-content" id="avatarDropdown">
+            <a href="#">Edit Profile</a>
+            <a onclick="window.location.href='components/logout.php'">Logout</a>
           </div>
+        </div>
+
         </div>
       </div>
     </nav>
@@ -200,7 +210,7 @@
                 pada permukaan kain.
               </p>
 
-              <a href="/pages/edukasi1.html">
+              <a href="pages/edukasi1.html">
                 <button
                   class="button-tentang-kami px-4 py-2 border-0 rounded-3"
                 >
@@ -326,13 +336,15 @@
             </div>
           </div>
 
-          <button
-            class="button-manfaat px-4 py-2 border-0 rounded-3 float-end"
-            data-aos="zoom-in"
-          >
-            Baca lebih lanjut
-            <a href="#"><img src="Assets/img/arrow-right.png" alt="" /></a>
-          </button>
+          <a href="pages/edukasi1.html">
+            <button
+              class="button-manfaat px-4 py-2 border-0 rounded-3 float-end"
+              data-aos="zoom-in"
+            >
+              Baca lebih lanjut
+              <img src="Assets/img/arrow-right.png" alt="" />
+            </button>
+          </a>
         </div>
       </div>
     </section>
@@ -384,14 +396,15 @@
                   bunga, atau bagian tumbuhan lain di atas kain yang telah
                   direndam dalam larutan mordant.
                 </p>
+                <a href="pages/edukasi2.html">
                 <button
                   class="button-tentang-kami px-4 py-2 border-0 rounded-3 float-end"
                 >
                   Baca lebih lanjut
-                  <a href="#"
-                    ><img src="Assets/img/arrow-right.png" alt=""
-                  /></a>
+                    <img src="Assets/img/arrow-right.png" alt=""
+                  />
                 </button>
+              </a>
               </div>
             </div>
           </div>
@@ -415,14 +428,15 @@
                   bunga, atau bagian tumbuhan lain di atas kain yang telah
                   direndam dalam larutan mordant.
                 </p>
+                <a href="pages/edukasi2.html">
                 <button
                   class="button-tentang-kami px-4 py-2 border-0 rounded-3 float-end"
                 >
                   Baca lebih lanjut
-                  <a href="#"
-                    ><img src="Assets/img/arrow-right.png" alt=""
-                  /></a>
+                    <img src="Assets/img/arrow-right.png" alt=""
+                  />
                 </button>
+              </a>
               </div>
             </div>
           </div>
@@ -445,14 +459,15 @@
                   Teknik ecoprint yang dilakukan dengan membiarkan daun, bunga,
                   atau bagian tumbuhan lain terfermentasi selama beberapa hari.
                 </p>
+                <a href="pages/edukasi2.html">
                 <button
                   class="button-tentang-kami px-4 py-2 border-0 rounded-3 float-end"
                 >
                   Baca lebih lanjut
-                  <a href="#"
-                    ><img src="Assets/img/arrow-right.png" alt=""
-                  /></a>
+                    <img src="Assets/img/arrow-right.png" alt=""
+                  />
                 </button>
+              </a>
               </div>
             </div>
           </div>
@@ -476,14 +491,15 @@
                   bagian tumbuhan lain di atas kain yang telah direndam dalam
                   larutan mordant.
                 </p>
+                <a href="pages/edukasi2.html">
                 <button
                   class="button-tentang-kami px-4 py-2 border-0 rounded-3 float-end"
                 >
                   Baca lebih lanjut
-                  <a href="#"
-                    ><img src="Assets/img/arrow-right.png" alt=""
-                  /></a>
+                    <img src="Assets/img/arrow-right.png" alt=""
+                  />
                 </button>
+              </a>
               </div>
             </div>
           </div>
@@ -507,14 +523,15 @@
                   kain dengan bahan tumbuhan menggunakan tali atau benang untuk
                   mendapatkan hasil yang bagus.
                 </p>
+                <a href="pages/edukasi2.html">
                 <button
                   class="button-tentang-kami px-4 py-2 border-0 rounded-3 float-end"
                 >
                   Baca lebih lanjut
-                  <a href="#"
-                    ><img src="Assets/img/arrow-right.png" alt=""
-                  /></a>
+                    <img src="Assets/img/arrow-right.png" alt=""
+                  />
                 </button>
+              </a>
               </div>
             </div>
           </div>
@@ -538,14 +555,15 @@
                   mengikat kain untuk mendapatkan atau menciptakan pola sebelum
                   diwarnai.
                 </p>
+                <a href="pages/edukasi2.html">
                 <button
                   class="button-tentang-kami px-4 py-2 border-0 rounded-3 float-end"
                 >
                   Baca lebih lanjut
-                  <a href="#"
-                    ><img src="Assets/img/arrow-right.png" alt=""
-                  /></a>
+                    <img src="Assets/img/arrow-right.png" alt=""
+                  />
                 </button>
+              </a>
               </div>
             </div>
           </div>
@@ -571,12 +589,14 @@
             </h3>
           </div>
           <div class="col-lg-3">
+            <a href="pages/belanja.html">
             <button
               class="button-tentang-kami px-4 py-2 border-0 rounded-3 float-end"
             >
               Lihat lebih lanjut
-              <a href="#"><img src="Assets/img/arrow-right.png" alt="" /></a>
-            </button>
+                <img src="Assets/img/arrow-right.png" alt="" />
+              </button>
+            </a>
           </div>
         </div>
 
@@ -793,24 +813,24 @@
           data-aos-delay="200"
         >
           <div class="col-lg-3 col-md-6">
-            <img src="Assets/img/Image.png" alt="" />
+            <img src="Assets/img/logo-ecoprint.png" alt="" />
           </div>
           <div class="col-lg-3 col-md-6 informasi">
             <h5 class="title-footer">Informasi</h5>
             <li class="mb-2">
-              <a href="#hero">Beranda</a>
+              <a href="index.html">Beranda</a>
             </li>
             <li class="mb-2">
-              <a href="#edukasi">Edukasi</a>
+              <a href="pages/edukasi1.html">Edukasi</a>
             </li>
             <li class="mb-2">
-              <a href="#manfaat-ecoprint">Manfaat</a>
+              <a href="pages/edukasi1.html">Manfaat</a>
             </li>
             <li class="mb-2">
-              <a href="#teknik-ecoprint">Teknik</a>
+              <a href="pages/edukasi2.html">Teknik</a>
             </li>
             <li class="mb-2">
-              <a href="#berbelanja">Berbelanja</a>
+              <a href="pages/belanja.html">Berbelanja</a>
             </li>
           </div>
 
@@ -859,7 +879,7 @@
     </footer>
     <!-- Akhir Footer -->
 
-    <script src="/Assets/js/script.js"></script>
+    <script src="Assets/js/script.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init();
