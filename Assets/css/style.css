@@ -541,7 +541,9 @@ footer {
   border: none;
   color: #fff;
   font-weight: 700;
+  text-decoration: none;
 }
+
 /* End Produk Populer */
 
 /* Terlaris */
@@ -699,4 +701,7 @@ footer {
 
 /*================== END STYLING PAGE BELANJA KATEGORI ==================*/
 
-/*================== END STYLING PAGE BELANJA KATEGORI ==================*/
+/*================== START STYLING PAGE CHECKOUT ==================*/
+/* Add this CSS to your existing stylesheet or create a new one */
+
+

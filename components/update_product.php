@@ -8,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         isset($_POST['category']) &&
         isset($_POST['name']) &&
         isset($_POST['description']) &&
+        isset($_POST['detail']) &&
         isset($_POST['price']) &&
         isset($_FILES['image'])
     ) {
@@ -16,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         $category = $_POST['category'];
         $name = $_POST['name'];
         $description = $_POST['description'];
+        $detail = $_POST['detail'];
         $price = $_POST['price'];
         $image = $_FILES['image']['name'];
         $image_tmp_name = $_FILES['image']['tmp_name'];
@@ -24,6 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         $category = mysqli_real_escape_string($conn, $category);
         $name = mysqli_real_escape_string($conn, $name);
         $description = mysqli_real_escape_string($conn, $description);
+        $detail = mysqli_real_escape_string($conn, $detail);
         $price = mysqli_real_escape_string($conn, $price);
 
         $upload_folder = '../uploaded_files/';
@@ -31,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
         // Pindahkan file gambar yang diunggah ke folder yang ditentukan
         if (move_uploaded_file($image_tmp_name, $upload_folder . $image)) {
             // Query untuk melakukan update data produk
-            $query = "UPDATE `produk` SET category='$category', name='$name', description='$description', price='$price', image='$image' WHERE id='$product_id';";
+            $query = "UPDATE `produk` SET category='$category', name='$name', description='$description', detail='$detail', price='$price', image='$image' WHERE id='$product_id';";
             $sql = mysqli_query($conn, $query);
 
             // Periksa apakah query berhasil dijalankan
@@ -62,6 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
             $category = $result['category'];
             $name = $result['name'];
             $description = $result['description'];
+            $detail = $result['detail'];
             $price = $result['price'];
             $image = $result['image'];
         } else {
@@ -128,6 +132,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update'])) {
             <div class="mb-3">
                 <label for="description" class="form-label">Deskripsi Produk</label>
                 <input type="text" name="description" placeholder="Masukan Deskripsi Produk" class="form-control" value="<?= isset($description) ? $description : ''; ?>">
+            </div>
+            <div class="mb-3">
+                <label for="detail" class="form-label">Detail Produk</label>
+                <input type="text" name="detail" placeholder="Masukan Detail Produk" class="form-control" value="<?= isset($detail) ? $detail : ''; ?>">
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Harga Produk</label>

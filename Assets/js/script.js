@@ -35,38 +35,6 @@ function setActive(page) {
   window.location.href = activeItem.getAttribute("href");
 }
 
-// Fungsi Baca Selengkapknya
-// document.addEventListener("DOMContentLoaded", function () {
-//   var cards = document.querySelectorAll(".card");
-//   var showMoreBtn = document.getElementById("showMoreBtn");
-//   var currentIndex = 5; // Menunjukkan card yang ditampilkan hingga saat ini
-
-//   // Menampilkan lima card pertama secara default
-//   for (var i = 0; i < 5; i++) {
-//     cards[i].style.display = "block";
-//   }
-
-//   showMoreBtn.addEventListener("click", function () {
-//     // Menampilkan lima card berikutnya ketika tombol diklik
-//     for (var i = currentIndex; i < currentIndex + 5 && i < cards.length; i++) {
-//       cards[i].style.display = "block";
-//     }
-
-//     // Memperbarui indeks saat ini
-//     currentIndex += 5;
-
-//     // Menyembunyikan tombol jika semua card sudah ditampilkan
-//     if (currentIndex >= cards.length) {
-//       showMoreBtn.style.display = "none";
-//     }
-//   });
-
-//   // Menyembunyikan tombol jika semua card sudah ditampilkan saat halaman dimuat
-//   if (currentIndex >= cards.length) {
-//     showMoreBtn.style.display = "none";
-//   }
-// });
-
 // BAGIAN BUTTON ACKTIVE SEMUA KATEGORI
 function toggleCategory(category) {
   // Mendapatkan semua elemen <a> di dalam #categoryMenu

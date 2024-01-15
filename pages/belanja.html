@@ -1,3 +1,58 @@
+<?php
+include '../components/db.php';
+
+if (isset($_COOKIE['user_id'])) {
+    $user_id = $_COOKIE['user_id'];
+} else {
+    setcookie('user_id', create_unique_id(), time() + 60 * 60 * 24 * 30);
+}
+
+if (isset($_POST['add_to_cart'])) {
+
+    $id = create_unique_id();
+    $product_id = $_POST['product_id'] ?? null; // Use the null coalescing operator to handle undefined index
+    $product_id = filter_var($product_id, FILTER_SANITIZE_STRING);
+    $qty = $_POST['qty'] ?? null; // Use the null coalescing operator to handle undefined index
+    $qty = filter_var($qty, FILTER_SANITIZE_STRING);
+
+    // Verify cart
+    $verify_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ? AND product_id = ?");
+    $verify_cart->bind_param("ss", $user_id, $product_id);
+    $verify_cart->execute();
+    $verify_cart_result = $verify_cart->get_result();
+
+    // Max cart items
+    $max_cart_items = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+    $max_cart_items->bind_param("s", $user_id);
+    $max_cart_items->execute();
+    $max_cart_items_result = $max_cart_items->get_result();
+
+    if ($verify_cart_result->num_rows > 0) {
+        $warning_msg[] = 'Already added to cart!';
+    } elseif ($max_cart_items_result->num_rows == 10) {
+        $warning_msg[] = 'Cart is full!';
+    } else {
+
+        $select_price = $conn->prepare("SELECT * FROM `produk` WHERE id = ? LIMIT 1");
+        $select_price->bind_param("i", $product_id);
+        $select_price->execute();
+        $select_price_result = $select_price->get_result();
+
+        if ($select_price_result->num_rows > 0) {
+            $fetch_price = $select_price_result->fetch_assoc();
+
+            $insert_cart = $conn->prepare("INSERT INTO `cart`(id, user_id, product_id, price, qty) VALUES(?,?,?,?,?)");
+            $insert_cart->bind_param("sssss", $id, $user_id, $product_id, $fetch_price['price'], $qty);
+            $insert_cart->execute();
+            $success_msg[] = 'Added to cart!';
+        } else {
+            $warning_msg[] = 'Product not found!';
+        }
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -99,7 +154,6 @@
                   onclick="toggleDropdown()"
                 />
               <div class="dropdown-content" id="avatarDropdown">
-                <a href="#">Edit Profile</a>
                 <a onclick="window.location.href='../components/logout.php'">Logout</a>
               </div>
             </div>
@@ -170,14 +224,15 @@
                   <i class="bi bi-search text-white"></i>
                 </button>
 
-                <button class="ms-5 border-0 bg-transparent">
-                  <img
-                    src="../Assets/img/img-belanja/icon-keranjang.png"
-                    alt=""
-                    width="40px"
-                    height="37px"
-                  />
+                <button class="ms-5 border-0 bg-transparent" onclick="goToCart()">
+                  <img src="../Assets/img/img-belanja/icon-keranjang.png" alt="" width="40px" height="37px" />
                 </button>
+              
+                <script>
+                    function goToCart() {
+                        window.location.href = '../pages/keranjang.html'; // Ganti 'keranjang.html' dengan URL halaman keranjang yang benar
+                    }
+                </script>
               </div>
             </div>
           </div>
@@ -278,71 +333,76 @@
             </div>
           </div>
 
-          <section class="products"></section>
-            <h3 class="title-belanja">Produk Populer</h3>
-            <div class="row g-3 row-cols-lg-5 row-cols-md-3 row-cols-1 mt-2">
-              <?php 
-                  include '../components/db.php';
-                  $select_products = $conn->prepare("SELECT * FROM `produk`");
-                  $select_products->execute();
-                  $result = $select_products->get_result();
-                  
-                  if ($result->num_rows > 0) {
-                    while ($fetch_product = $result->fetch_assoc()) {
-                ?>
-                      <div class="col">
-                        <a href="detail_produk.html" style="text-decoration: none;">
-                          <div class="card card-produk p-2 border-0">
-                            <img src="../uploaded_files/<?= $fetch_product['image']; ?>" class="card-img-top" alt="<?= $fetch_product['name']; ?>" />
-                            <div class="card-body-produk p-2">
-                              <p class="pt-2 sub-text-produk"><?= $fetch_product['category']; ?></p>
-                              <h5><?= $fetch_product['name']; ?></h5>
-                              <!-- Penilaian produk -->
-                              <!-- Di sini saya tetapkan rating secara statis dengan nilai 4.7 -->
-                              <div class="rating">
-                                <?php
-                                  $rating = 4.7;
-                                  $full_stars = (int) $rating;
-                                  $half_star = $rating - $full_stars >= 0.5 ? true : false;
-                                  
-                                  for ($i = 0; $i < $full_stars; $i++) {
-                                    echo '<i class="bi bi-star-fill"></i>';
-                                  }
-                                  
-                                  if ($half_star) {
-                                    echo '<i class="bi bi-star-half"></i>';
-                                    $empty_stars = 5 - $full_stars - 1;
-                                  } else {
-                                    $empty_stars = 5 - $full_stars;
-                                  }
-                                  
-                                  for ($i = 0; $i < $empty_stars; $i++) {
-                                    echo '<i class="bi bi-star"></i>';
-                                  }
-                                ?>
-                                <span>(<?= $rating; ?>)</span>
+          <section class="products">
+          <h3 class="title-belanja">Produk Populer</h3>
+          <div class="row g-3 row-cols-lg-5 row-cols-md-3 row-cols-1 mt-2">
+              <?php
+              $select_products = $conn->prepare("SELECT * FROM `produk`");
+              $select_products->execute();
+              $result = $select_products->get_result(); // Menggunakan get_result() untuk mendapatkan hasil
+
+              if ($result->num_rows > 0) {
+                  while ($fetch_product = $result->fetch_assoc()) {
+                      ?>
+                      <form action="" method="POST" class="box">
+                          <a href="detail_produk.html?id_produk=<?= $fetch_product['id']; ?>" style="text-decoration: none;">
+                              <div class="card card-produk p-2 border-0">
+                                  <img src="../uploaded_files/<?= $fetch_product['image']; ?>" class="card-img-top"
+                                      alt="<?= $fetch_product['name']; ?>" />
+                                  <div class="card-body-produk p-2">
+                                      <p class="pt-2 sub-text-produk"><?= $fetch_product['category']; ?></p>
+                                      <h5><?= $fetch_product['name']; ?></h5>
+                                      <!-- Penilaian produk -->
+                                      <!-- Di sini saya tetapkan rating secara statis dengan nilai 4.7 -->
+                                      <div class="rating" style="color: black;">
+                                          <?php
+                                          $rating = 4.7;
+                                          $full_stars = (int)$rating;
+                                          $half_star = $rating - $full_stars >= 0.5 ? true : false;
+
+                                          for ($i = 0; $i < $full_stars; $i++) {
+                                              echo '<i class="bi bi-star-fill"></i>';
+                                          }
+
+                                          if ($half_star) {
+                                              echo '<i class="bi bi-star-half"></i>';
+                                              $empty_stars = 5 - $full_stars - 1;
+                                          } else {
+                                              $empty_stars = 5 - $full_stars;
+                                          }
+
+                                          for ($i = 0; $i < $empty_stars; $i++) {
+                                              echo '<i class="bi bi-star"></i>';
+                                          }
+                                          ?>
+                                          <span>(<?= $rating; ?>)</span>
+                                      </div>
+                                      <p class="pt-2 sub-text-produk"><?= $fetch_product['description']; ?></p>
+                                      <div class="d-flex align-items-center justify-content-between">
+                                          <p class="fw-bold m-1">Rp.<?= $fetch_product['price']; ?></p>
+                                          <input type="hidden" name="product_id" value="<?= $fetch_product['id']; ?>">
+                                          <input type="hidden" name="qty" value="1"> <!-- Jumlah default, Anda dapat mengganti ini sesuai kebutuhan -->
+                                          <a href="../components/checkout.php?product_id=<?= $fetch_product['id']; ?>" class="btn-add-product p-2 px-5 mx-2">Beli</a>
+
+                                          <!-- <button class="btn-add-product" type="submit" name="add_to_cart">
+                                              <i class="bi bi-cart-dash"></i>
+                                              Tambah
+                                          </button> -->
+                                      </div>
+                                  </div>
                               </div>
-                              <p class="pt-2 sub-text-produk"><?= $fetch_product['description']; ?></p>
-                              <div class="d-flex align-items-center justify-content-between">
-                                <p class="fw-bold m-1">Rp.<?= $fetch_product['price']; ?></p>
-                                <button class="btn-add-product" type="button">
-                                  <i class="bi bi-cart-dash"></i>
-                                  Tambah
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </a>
-                      </div>
-                <?php
-                    }
-                  } else {
-                    echo '<p class="empty">Tidak ada produk ditemukan!</p>';
+                          </a>
+                      </form>
+                      <?php
                   }
-                ?>
-              </div>
-            </section>
-            
+              } else {
+                  echo '<p class="empty">Tidak ada produk ditemukan!</p>';
+              }
+              ?>
+          </div>
+          </section>
+
+
 
     <section>
       <div id="myCarousel" class="carousel slide mt-5" data-bs-ride="carousel">

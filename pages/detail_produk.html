@@ -97,7 +97,6 @@
               onclick="toggleDropdown()"
             />
           <div class="dropdown-content" id="avatarDropdown">
-            <a href="#">Edit Profile</a>
             <a onclick="window.location.href='../components/logout.php'">Logout</a>
           </div>
         </div>
@@ -181,29 +180,51 @@
     </section>
 
     <section>
-        <div class="detail-produk">
-            <div class="container-lg">
-                <h3 class="title-belanja mt-5">Detail Produk</h3>
-                <div class="row d-flex align-items-center justify-content-center mt-5">
-                    <div class="col-lg-4 col-md-5 mx-4">
-                        <img src="../Assets/img/detail.png" alt=""  class="card-img-top">
-                    </div>
-                    <div class="col-lg-5 col-md-6">
-                      <h5 class="fw-bold fs-3">Floral-print Dress</h5>
-                      <p>Cultural Idn</p>
-                      <p class="fw-bold fs-4">Rp.100.000</p>
-                      <p style="text-align: justify;">Floral-print Dress Ecoprint menggambarkan keindahan bunga dalam fashion yang ramah lingkungan. Dengan teknik pencetakan Ecoprint yang inovatif, dress ini menampilkan motif bunga yang menawan. Terbuat dari bahan ramah lingkungan, dress ini tidak hanya memberikan tampilan modis, tetapi juga mendukung keberlanjutan. Dengan potongan yang nyaman dan gaya yang anggun, Floral-print Dress Ecoprint menjadi pilihan sempurna untuk gaya yang berkelanjutan dan bermakna.</p>
-                      <button class="btn-add-product p-2 px-5" type="button">
-                        Tambah
-                      </button>
-                      <button class="btn-add-product p-2 px-5 mx-2" type="button">
-                        Beli Sekarang
-                      </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="detail-produk">
+          <div class="container-lg">
+              <h3 class="title-belanja mt-5">Detail Produk</h3>
+              <?php 
+              include '../components/db.php';
+  
+              if (isset($_GET['id_produk'])) {
+                  $id_produk = $_GET['id_produk'];
+  
+                  $select_product = $conn->prepare("SELECT * FROM `produk` WHERE id = ?");
+                  $select_product->bind_param("i", $id_produk);
+                  $select_product->execute();
+                  $result = $select_product->get_result();
+  
+                  if ($result->num_rows > 0) {
+                      $fetch_product = $result->fetch_assoc();
+                      ?>
+                      <div class="row d-flex align-items-center justify-content-center mt-5">
+                          <div class="col-lg-4 col-md-5 mx-4">
+                              <img src="../uploaded_files/<?= $fetch_product['image']; ?>" alt=""  class="card-img-top">
+                          </div>
+                          <div class="col-lg-5 col-md-6">
+                              <h5 class="fw-bold fs-3"><?= $fetch_product['name']; ?></h5>
+                              <p><?= $fetch_product['description']; ?></p>
+                              <p class="fw-bold fs-4">Rp.<?= $fetch_product['price']; ?></p>
+                              <p style="text-align: justify;"><?= $fetch_product['detail']; ?></p>
+
+                            
+                              <a href="../components/checkout.php?product_id=<?= $fetch_product['id']; ?>" class="btn-add-product p-2 px-5 mx-2">Beli Sekarang</a>
+
+
+                          </div>
+                      </div>
+                      <?php
+                  } else {
+                      echo '<p class="empty">Tidak ada produk ditemukan!</p>';
+                  }
+              } else {
+                  echo '<p class="empty">ID produk tidak diberikan!</p>';
+              }
+              ?>
+          </div>
+      </div>
+  </section>
+  
 
     <section>
       <div class="products">
@@ -221,7 +242,7 @@
                     while ($fetch_product = $result->fetch_assoc()) {
                 ?>
                       <div class="col">
-                        <a href="detail_produk.html" style="text-decoration: none;">
+                        <a href="detail_produk.html?id_produk=<?= $fetch_product['id']; ?>" style="text-decoration: none;">
                           <div class="card card-produk p-2 border-0">
                             <img src="../uploaded_files/<?= $fetch_product['image']; ?>" class="card-img-top" alt="<?= $fetch_product['name']; ?>" />
                             <div class="card-body-produk p-2">
@@ -255,10 +276,12 @@
                               <p class="pt-2 sub-text-produk"><?= $fetch_product['description']; ?></p>
                               <div class="d-flex align-items-center justify-content-between">
                                 <p class="fw-bold m-1">Rp.<?= $fetch_product['price']; ?></p>
-                                <button class="btn-add-product" type="button">
+                                <!-- <button class="btn-add-product" type="button">
                                   <i class="bi bi-cart-dash"></i>
                                   Tambah
-                                </button>
+                                </button> -->
+                                <a href="../components/checkout.php?product_id=<?= $fetch_product['id']; ?>" class="btn-add-product p-2 px-5 mx-2">Beli</a>
+
                               </div>
                             </div>
                           </div>
